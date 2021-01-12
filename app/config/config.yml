@@ -3,6 +3,8 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: 'local/' }
+    
+    - { resource: cmf.yml }
 
 pimcore:
 
