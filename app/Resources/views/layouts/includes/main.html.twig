@@ -1,0 +1,11 @@
+{# Locale Modal #}
+{% include '/layouts/includes/locale_modal.html.twig' %}
+
+{# Main content #}
+<div class="container mt-5">
+    {# Integrate an Areablock in the Template #}
+    {{ pimcore_areablock('mainAreablock', {
+            'allowed': ['hero-banner', 'tool-card']
+        })
+    }}
+</div>

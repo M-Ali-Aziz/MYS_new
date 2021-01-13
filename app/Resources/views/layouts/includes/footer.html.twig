@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    {% if editmode %}
+        <h3 class="float-left">{{ 'Footer Column(s):' }}</h3>
+    {% endif %}
+    {% for i in pimcore_iterate_block(pimcore_block('mainlinkblock')) %}
+        <div class="col-2">
+            <h5>{{ pimcore_input('mainBlockTitle', {'placeholder': 'Footer Title'}) }}</h5>
+            <ul class="list-unstyled text-small">
+                {% for i in pimcore_iterate_block(pimcore_block('linkblock')) %}
+                    <li>{{ pimcore_link('mainBlockLink', {'class': "text-muted"}) }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% if editmode %}
+            <hr />
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% if editmode %}
+    <h3 class="float-left">{{ 'Footer Text:' }}</h3>
+{% endif %}
+<h5 class="text-center mt-4">{{ pimcore_input('madeTitle', {'placeholder': 'Made with LOVE in Sweden'}) }}</h5>
+{% if editmode %}
+    <hr />
+{% endif %}
+
+{% if editmode %}
+    <h3 class="float-left">{{ 'Media icon(s):' }}</h3>
+{% endif %}
+<div class="d-flex justify-content-center mt-4">
+    {% for i in pimcore_iterate_block(pimcore_block('mediablock')) %}
+        {% if editmode %}
+            {{ pimcore_link('mediaLink', {'noText': true}) }}
+            {{ pimcore_image('mediaimage', {
+                'title': 'Drag your image here',
+                'width': 100,
+                'height': 100,
+
+            }) }}
+            <hr />
+        {% else %}
+            <a href="{{ pimcore_link('mediaLink').href }}" class="mr-2" role="button">
+                {{ pimcore_image('mediaimage',{
+                    'width': 30,
+                    'height': 30,
+                    'removeAttributes': ['title'],
+                    'alt': 'bild'
+                }) }}
+            </a>
+        {% endif %}
+    {% endfor %}
+</div>

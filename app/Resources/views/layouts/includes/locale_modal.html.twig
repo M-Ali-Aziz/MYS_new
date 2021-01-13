@@ -1,0 +1,47 @@
+<div class="container">
+    {# Button trigger locale modal #}
+    <button type="button" class="btn float-right px-0 mt-2" data-toggle="modal" data-target="#localeModal">{{ 'language' | trans }}: <u>{{ 'language_name' | trans }}</u></button>
+
+    {# Locale modal #}
+    <div class="modal fade" id="localeModal" tabindex="-1" aria-labelledby="Locale modal" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="row p-5">
+                        <div class="col-6">
+                            <h3>{{ 'region' | trans }}</h3>
+                            <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                <a class="nav-link {% if app.request.locale == 'sv' %}active{% endif %}" id="v-pills-europe-tab" data-toggle="pill" href="#v-pills-europe" role="tab" aria-controls="v-pills-europe" aria-selected="true">Europe</a>
+                                <a class="nav-link  {% if app.request.locale == 'en' %}active{% endif %}" id="v-pills-usa-tab" data-toggle="pill" href="#v-pills-usa" role="tab" aria-controls="v-pills-usa" aria-selected="false">The United States, Canada</a>
+                                <a class="nav-link" id="v-pills-middleEast-tab" data-toggle="pill" href="#v-pills-middleEast" role="tab" aria-controls="v-pills-middleEast" aria-selected="false">Middle East<small> - Coming soon</small></a>
+                                <a class="nav-link" id="v-pills-africa-tab" data-toggle="pill" href="#v-pills-africa" role="tab" aria-controls="v-pills-africa" aria-selected="false">Africa<small> - Coming soon</small></a>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <h3>{{ 'language' | trans }}</h3>
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div class="tab-pane fade show active" id="v-pills-europe" role="tabpanel" aria-labelledby="v-pills-europe-tab">
+                                    <div class="btn-group-vertical">
+                                        <a class="mb-2" href="/sv">
+                                            <button type="button" class="btn {{ (app.request.locale == 'sv') ? 'btn-primary' :  'btn-light' }}">Svenska</button>
+                                        </a>
+                                        <a href="/en">
+                                            <button type="button" class="btn {{ (app.request.locale == 'en') ? 'btn-primary' :  'btn-light' }}">English</button>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-usa" role="tabpanel" aria-labelledby="v-pills-usa-tab">
+                                    <a class="mb-2" href="/en">
+                                        <button type="button" class="btn {{ (app.request.locale == 'en') ? 'btn-primary' :  'btn-light' }}">English</button>
+                                    </a>
+                                </div>
+                                <div class="tab-pane fade" id="v-pills-middleEast" role="tabpanel" aria-labelledby="v-pills-middleEast-tab">Coming soon ...</div>
+                                <div class="tab-pane fade" id="v-pills-africa" role="tabpanel" aria-labelledby="v-pills-africa-tab">Coming soon ...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

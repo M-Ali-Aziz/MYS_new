@@ -1,0 +1,44 @@
+{# get root node if there is no document defined (for pages which are routed directly through static route) #}
+{% if not document is defined or not document %}
+    {% set document = pimcore_document(1) %}
+{% endif %}
+
+{# get the document which should be used to start in navigation | default home #}
+{% set navStartNode = document.getProperty('navigation_root') %}
+
+{% if not navStartNode is instanceof('\\Pimcore\\Model\\Document') %}
+    {% set navStartNode = pimcore_document(1) %}
+{% endif %}
+
+{% set mainNavigation = pimcore_build_nav({
+    active: document,
+    root: navStartNode
+}) %}
+
+{# Navigation sidebar left #}
+<nav class="sticky-top pt-5">
+    <ul class="navbar-nav flex-column">
+        {# Logo Image #}
+        <li class="nav-item mb-4">
+            <a href="{{ navStartNode }}">
+                <img id="logo" src="{{ asset('/static/images/logo.svg') }}" width="120" height="70" alt="logo" loading="lazy">
+            </a>
+        </li>
+
+        {# Links #}
+        {% for link in mainNavigation|filter(link => link.visible == true) %}
+              <li class="nav-item pl-4">
+                <a class="nav-link text-dark {% if link.active %}font-weight-bold active{% endif %}" href="{{ link.uri }}">{{ link.label}}</a>
+              </li>
+        {% endfor %}
+
+        {# Login & Signup Links #}
+        <li class="nav-item mt-4 pl-4">
+            <a class="nav-link text-dark" href="#">Login</a>
+        </li>
+        <li class="nav-item px-4 mr-auto btn-primary rounded-pill">
+            <a class="nav-link text-dark" href="#">Signup</a>
+        </li>
+    </ul>
+
+</nav>

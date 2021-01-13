@@ -1,0 +1,18 @@
+/* ------------------------------------ *
+ * Hero Banner
+ * ------------------------------------ */
+#heroBanner {
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
+/* ------------------------------------ *
+ * Bootstrap override
+ * ------------------------------------ */
+.card {
+    border: none;
+    border-radius: 10px;
+}
