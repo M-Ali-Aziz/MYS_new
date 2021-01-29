@@ -2,6 +2,11 @@
 # CMF Services
 # ---------------------------------------------------------
 services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
     # example customer save handler config
     appbundle.cmf.customer_save_handler.normalize_zip:
        class: CustomerManagementFrameworkBundle\CustomerSaveHandler\NormalizeZip
@@ -19,6 +24,11 @@ services:
 # ---------------------------------------------------------
 # CMF Config
 # ---------------------------------------------------------
+pimcore:
+    models:
+        class_overrides:
+            Pimcore\Model\DataObject\Customer: AppBundle\Model\Customer
+            
 pimcore_customer_management_framework:
 
     # Configuration of customer save manager
@@ -123,7 +133,7 @@ pimcore_customer_management_framework:
 
     # Enable/Disable SSO oauth client. If enabled additional steps are necessary, see SSO docs for details.
     oauth_client:
-        enabled: true
+        enabled: false
 
     # Configuration of EncryptionService
     # encryption:

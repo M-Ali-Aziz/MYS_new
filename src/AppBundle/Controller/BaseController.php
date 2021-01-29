@@ -14,5 +14,7 @@ class BaseController extends FrontendController
      */
     public function onKernelController(FilterControllerEvent $event)
     {
+        // Enable view auto-rendering
+        $this->setViewAutoRender($event->getRequest(), true, 'twig');
     }
 }

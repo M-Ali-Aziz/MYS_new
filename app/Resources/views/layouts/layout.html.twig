@@ -58,6 +58,7 @@
     </head>
 
     <body>
+    {% block content %}
         <div class="container">
             <div class="row">
                 <header class="col-3">
@@ -66,9 +67,12 @@
                   {% endblock %}
                 </header>
                 <main role="main" class="col-9">
-                  {% block main %}
-                    {% include 'layouts/includes/main.html.twig' %}
-                  {% endblock %}
+                    {% block locale_modal %}
+                        {% include '/layouts/includes/locale_modal.html.twig' %}
+                    {% endblock %}
+                    {% block main %}
+                        {% include 'layouts/includes/main.html.twig' %}
+                    {% endblock %}
                 </main>
             </div>
             <div class="row mt-5 mb-3 py-5 rounded bg-light">
@@ -80,6 +84,7 @@
                 </footer>
             </div>
         </div>
+    {% endblock %}
 
         {# output scripts added before #}
         {% block head_scripts deferred %}
