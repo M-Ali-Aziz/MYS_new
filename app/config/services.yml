@@ -30,5 +30,6 @@ services:
     # ---------------------------------------------------------
     # Forms
     # ---------------------------------------------------------
+    AppBundle\Form\LoginFormType: ~
     AppBundle\Form\RegistrationFormType: ~
     AppBundle\Form\RegistrationFormHandler: ~

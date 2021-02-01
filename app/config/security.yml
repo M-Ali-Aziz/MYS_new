@@ -53,3 +53,4 @@ security:
 
             remember_me:
                 secret:   '%kernel.secret%'
+                # always_remember_me: true
