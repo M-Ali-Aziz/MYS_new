@@ -2554,16 +2554,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.157.1",
+            "version": "v0.159.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "9482a187d6e921b134b7ac5ca6171a1b57de5ef2"
+                "reference": "d5334e9853afe16e7d8215006a475061d8023216"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/9482a187d6e921b134b7ac5ca6171a1b57de5ef2",
-                "reference": "9482a187d6e921b134b7ac5ca6171a1b57de5ef2",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/d5334e9853afe16e7d8215006a475061d8023216",
+                "reference": "d5334e9853afe16e7d8215006a475061d8023216",
                 "shasum": ""
             },
             "require": {
@@ -2587,20 +2587,20 @@
             "keywords": [
                 "google"
             ],
-            "time": "2021-01-28T17:37:08+00:00"
+            "time": "2021-02-05T12:20:02+00:00"
         },
         {
             "name": "google/auth",
-            "version": "v1.14.3",
+            "version": "v1.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-auth-library-php.git",
-                "reference": "c1503299c779af0cbc99b43788f75930988852cf"
+                "reference": "b346c07de6613e26443d7b4830e5e1933b830dc4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/c1503299c779af0cbc99b43788f75930988852cf",
-                "reference": "c1503299c779af0cbc99b43788f75930988852cf",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/b346c07de6613e26443d7b4830e5e1933b830dc4",
+                "reference": "b346c07de6613e26443d7b4830e5e1933b830dc4",
                 "shasum": ""
             },
             "require": {
@@ -2613,7 +2613,7 @@
             },
             "require-dev": {
                 "guzzlehttp/promises": "0.1.1|^1.3",
-                "kelvinmo/simplejwt": "^0.2.5",
+                "kelvinmo/simplejwt": "^0.2.5|^0.5.1",
                 "phpseclib/phpseclib": "^2",
                 "phpunit/phpunit": "^4.8.36|^5.7",
                 "sebastian/comparator": ">=1.2.3",
@@ -2639,12 +2639,7 @@
                 "google",
                 "oauth2"
             ],
-            "support": {
-                "docs": "https://googleapis.github.io/google-auth-library-php/master/",
-                "issues": "https://github.com/googleapis/google-auth-library-php/issues",
-                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.14.3"
-            },
-            "time": "2020-10-16T21:33:48+00:00"
+            "time": "2021-02-05T20:50:04+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -3448,16 +3443,16 @@
         },
         {
             "name": "linfo/linfo",
-            "version": "v4.0.5",
+            "version": "v4.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jrgp/linfo.git",
-                "reference": "e3d50585556a92546f1899f354078f96c0a12298"
+                "reference": "aea87565d4fd1124e637581b66a41c8b86ee22bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jrgp/linfo/zipball/e3d50585556a92546f1899f354078f96c0a12298",
-                "reference": "e3d50585556a92546f1899f354078f96c0a12298",
+                "url": "https://api.github.com/repos/jrgp/linfo/zipball/aea87565d4fd1124e637581b66a41c8b86ee22bb",
+                "reference": "aea87565d4fd1124e637581b66a41c8b86ee22bb",
                 "shasum": ""
             },
             "require": {
@@ -3497,11 +3492,7 @@
                 "specs",
                 "system"
             ],
-            "support": {
-                "issues": "https://github.com/jrgp/linfo/issues",
-                "source": "https://github.com/jrgp/linfo/tree/v4.0.5"
-            },
-            "time": "2020-11-15T00:33:01+00:00"
+            "time": "2021-01-28T17:51:22+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
@@ -5255,16 +5246,16 @@
         },
         {
             "name": "pimcore/pimcore",
-            "version": "v6.8.7",
+            "version": "v6.8.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pimcore/pimcore.git",
-                "reference": "d66a9628f92d75ecb75d5ade8a50283da70a0070"
+                "reference": "1786bdd4962ee51544fad537352c2b4223309442"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pimcore/pimcore/zipball/d66a9628f92d75ecb75d5ade8a50283da70a0070",
-                "reference": "d66a9628f92d75ecb75d5ade8a50283da70a0070",
+                "url": "https://api.github.com/repos/pimcore/pimcore/zipball/1786bdd4962ee51544fad537352c2b4223309442",
+                "reference": "1786bdd4962ee51544fad537352c2b4223309442",
                 "shasum": ""
             },
             "require": {
@@ -5418,7 +5409,7 @@
                 "e-commerce",
                 "rad"
             ],
-            "time": "2021-01-20T13:53:12+00:00"
+            "time": "2021-02-05T09:39:02+00:00"
         },
         {
             "name": "pimcore/search-query-parser",
@@ -8433,16 +8424,16 @@
         },
         {
             "name": "vrana/adminer",
-            "version": "v4.7.8",
+            "version": "v4.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vrana/adminer.git",
-                "reference": "190146672f6ce9b8f08af2d7e7a5e8f768d32ee6"
+                "reference": "93c7fb248ca008e3247eb3a43812e1096e7b262c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vrana/adminer/zipball/190146672f6ce9b8f08af2d7e7a5e8f768d32ee6",
-                "reference": "190146672f6ce9b8f08af2d7e7a5e8f768d32ee6",
+                "url": "https://api.github.com/repos/vrana/adminer/zipball/93c7fb248ca008e3247eb3a43812e1096e7b262c",
+                "reference": "93c7fb248ca008e3247eb3a43812e1096e7b262c",
                 "shasum": ""
             },
             "type": "library",
@@ -8477,7 +8468,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2020-12-06T12:58:20+00:00"
+            "time": "2021-02-07T17:25:18+00:00"
         },
         {
             "name": "vrana/jush",
@@ -8874,25 +8865,26 @@
     "packages-dev": [
         {
             "name": "behat/gherkin",
-            "version": "v4.7.1",
+            "version": "v4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Gherkin.git",
-                "reference": "987bcdc3d29ba433e6bd4b1db4ae59737ba3dacd"
+                "reference": "2391482cd003dfdc36b679b27e9f5326bd656acd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/987bcdc3d29ba433e6bd4b1db4ae59737ba3dacd",
-                "reference": "987bcdc3d29ba433e6bd4b1db4ae59737ba3dacd",
+                "url": "https://api.github.com/repos/Behat/Gherkin/zipball/2391482cd003dfdc36b679b27e9f5326bd656acd",
+                "reference": "2391482cd003dfdc36b679b27e9f5326bd656acd",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.6"
+                "php": "~7.2|~8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "~5.7|~6|~7",
-                "symfony/phpunit-bridge": "~2.7|~3|~4",
-                "symfony/yaml": "~2.3|~3|~4"
+                "cucumber/cucumber": "dev-gherkin-16.0.0",
+                "phpunit/phpunit": "~8|~9",
+                "symfony/phpunit-bridge": "~3|~4|~5",
+                "symfony/yaml": "~3|~4|~5"
             },
             "suggest": {
                 "symfony/yaml": "If you want to parse features, represented in YAML files"
@@ -8929,7 +8921,7 @@
                 "gherkin",
                 "parser"
             ],
-            "time": "2021-01-26T16:24:32+00:00"
+            "time": "2021-02-04T12:44:21+00:00"
         },
         {
             "name": "cache/integration-tests",
