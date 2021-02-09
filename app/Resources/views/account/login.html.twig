@@ -27,7 +27,7 @@
                         <label class="custom-control-label" for="remember_me">{{ 'remember_me' | trans }}</label>
                     </div>
 
-                    <p><a href="#">{{ 'forgot_your_password_?' | trans }}</a></p>
+                    <p><a href="{{ path('account-password-send-recovery') }}">{{ 'forgot_your_password_?' | trans }}</a></p>
 
                     {{ form_row(form._submit, {'attr': {'class': 'btn-success btn-lg btn-block mt-4'}}) }}
 

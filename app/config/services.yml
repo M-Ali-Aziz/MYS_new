@@ -33,3 +33,9 @@ services:
     AppBundle\Form\LoginFormType: ~
     AppBundle\Form\RegistrationFormType: ~
     AppBundle\Form\RegistrationFormHandler: ~
+
+
+    # ---------------------------------------------------------
+    # Misc Services
+    # ---------------------------------------------------------
+    AppBundle\Services\PasswordRecoveryService: ~

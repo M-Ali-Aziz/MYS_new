@@ -8,6 +8,7 @@ use AppBundle\Form\RegistrationFormType;
 use CustomerManagementFrameworkBundle\CustomerProvider\CustomerProviderInterface;
 use CustomerManagementFrameworkBundle\CustomerSaveValidator\Exception\DuplicateCustomerException;
 use CustomerManagementFrameworkBundle\Model\CustomerInterface;
+use AppBundle\Services\PasswordRecoveryService;
 use CustomerManagementFrameworkBundle\Security\Authentication\LoginManagerInterface;
 use Pimcore\Bundle\EcommerceFrameworkBundle\Factory;
 use Pimcore\Translation\Translator;
@@ -64,6 +65,11 @@ class AccountController extends BaseController
             'action' => $this->generateUrl('account-login'),
         ]);
 
+        // Store referer in session to get redirected after login
+        if (!$request->get('no-referer-redirect')) {
+            $session->set('_security.mys_main.target_path', $request->headers->get('referer'));
+        }
+
         return [
             'form' => $form->createView(),
             'error' => $error
@@ -109,7 +115,7 @@ class AccountController extends BaseController
         $formData = $registrationFormHandler->buildFormData($customer);
         $hidePassword = false;
 
-        // build the registration form and pre-fill it with customer data
+        // Build the registration form and pre-fill it with customer data
         $form = $this->createForm(RegistrationFormType::class, $formData, ['hidePassword' => $hidePassword]);
         $form->handleRequest($request);
 
@@ -130,13 +136,9 @@ class AccountController extends BaseController
                     $response = $this->redirectToRoute('account-index');
                 }
 
-                // log user in manually
-                // pass response to login manager as it adds potential remember me cookies
+                // Log user in manually
+                // Pass response to login manager as it adds potential remember me cookies
                 $loginManager->login($customer, $request, $response);
-
-                // TODO $this->addFlash()
-                // https://symfony.com/doc/4.4/controller.html#flash-messages
-                // https://symfony.com/doc/4.4/session.html#avoid-starting-sessions-for-anonymous-users
 
                 return $response;
             } catch (DuplicateCustomerException $e) {
@@ -163,6 +165,63 @@ class AccountController extends BaseController
             'form' => $form->createView(),
             'errors' => $errors,
             'hidePassword' => $hidePassword
+        ];
+    }
+
+    /**
+     * @Route("/account/send-password-recovery", name="account-password-send-recovery")
+     *
+     * @param Request $request
+     * @param PasswordRecoveryService $service
+     * @param Translator $translator
+     *
+     * @throws \Exception
+     */
+    public function sendPasswordRecoveryMailAction(Request $request, PasswordRecoveryService $service, Translator $translator)
+    {
+        if ($request->isMethod(Request::METHOD_POST)) {
+
+            $service->sendRecoveryMail($request->get('email', ''), $this->document->getProperty('password_reset_mail'));
+            $this->addFlash('success', $translator->trans('account.reset-mail-sent-when-possible'));
+
+            return $this->redirectToRoute('account-login', ['no-referer-redirect' => true]);
+        }
+
+        return [
+            'emailPrefill' => $request->get('email')
+        ];
+    }
+
+    /**
+     * @Route("/account/reset-password", name="account-reset-password")
+     *
+     * @param Request $request
+     * @param PasswordRecoveryService $service
+     * @param Translator $translator
+     *
+     * @return array|RedirectResponse
+     */
+    public function resetPasswordAction(Request $request, PasswordRecoveryService $service, Translator $translator)
+    {
+        $token = $request->get('token');
+        $customer = $service->getCustomerByToken($token);
+        if (!$customer) {
+            //TODO render error page
+            throw new NotFoundHttpException('Invalid token');
+        }
+
+        if ($request->isMethod(Request::METHOD_POST)) {
+            $newPassword = $request->get('password');
+            $service->setPassword($token, $newPassword);
+
+            $this->addFlash('success', $translator->trans('account.password-reset-successful'));
+
+            return $this->redirectToRoute('account-login', ['no-referer-redirect' => true]);
+        }
+
+        return [
+            'token' => $token,
+            'email' => $customer->getEmail()
         ];
     }
 

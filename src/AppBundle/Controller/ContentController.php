@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class ContentController extends BaseController
-{   
+{
     /**
      * @Template
      * @param Request $request
