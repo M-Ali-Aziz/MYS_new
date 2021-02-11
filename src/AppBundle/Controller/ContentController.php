@@ -18,7 +18,6 @@ class ContentController extends BaseController
     }
 
     /**
-     * @Template
      * @param Request $request
      */
     public function startAction(Request $request)
