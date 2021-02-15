@@ -1,15 +1,13 @@
 <div class="row justify-content-center">
     {% if editmode %}
-        <h3 class="float-left">{{ 'Footer Column(s):' }}</h3>
+        <h3 class="float-strat">{{ 'Footer Column(s):' }}</h3>
     {% endif %}
     {% for i in pimcore_iterate_block(pimcore_block('mainlinkblock')) %}
         <div class="col-2">
-            <h5>{{ pimcore_input('mainBlockTitle', {'placeholder': 'Footer Title'}) }}</h5>
-            <ul class="list-unstyled text-small">
-                {% for i in pimcore_iterate_block(pimcore_block('linkblock')) %}
-                    <li>{{ pimcore_link('mainBlockLink', {'class': "text-muted"}) }}</li>
-                {% endfor %}
-            </ul>
+            <p><strong>{{ pimcore_input('mainBlockTitle', {'placeholder': 'Footer Title'}) }}</strong></p>
+            {% for i in pimcore_iterate_block(pimcore_block('linkblock')) %}
+                <p>{{ pimcore_link('mainBlockLink', {'class': ""}) }}</p>
+            {% endfor %}
         </div>
         {% if editmode %}
             <hr />
@@ -18,15 +16,15 @@
 </div>
 
 {% if editmode %}
-    <h3 class="float-left">{{ 'Footer Text:' }}</h3>
+    <h3 class="float-strat">{{ 'Footer Text:' }}</h3>
 {% endif %}
-<h5 class="text-center mt-4">{{ pimcore_input('madeTitle', {'placeholder': 'Made with LOVE in Sweden'}) }}</h5>
+<p class="text-center mt-4"><strong>{{ pimcore_input('madeTitle', {'placeholder': 'Made with LOVE in Sweden'}) }}</strong></p>
 {% if editmode %}
     <hr />
 {% endif %}
 
 {% if editmode %}
-    <h3 class="float-left">{{ 'Media icon(s):' }}</h3>
+    <h3 class="float-strat">{{ 'Media icon(s):' }}</h3>
 {% endif %}
 <div class="d-flex justify-content-center mt-4">
     {% for i in pimcore_iterate_block(pimcore_block('mediablock')) %}
@@ -40,12 +38,12 @@
             }) }}
             <hr />
         {% else %}
-            <a href="{{ pimcore_link('mediaLink').href }}" class="mr-2" role="button">
+            <a href="{{ pimcore_link('mediaLink').href }}" class="me-2" role="button">
                 {{ pimcore_image('mediaimage',{
-                    'width': 30,
-                    'height': 30,
+                    'width': 20,
+                    'height': 20,
                     'removeAttributes': ['title'],
-                    'alt': 'bild'
+                    'alt': 'media-icon'
                 }) }}
             </a>
         {% endif %}

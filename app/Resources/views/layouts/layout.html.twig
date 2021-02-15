@@ -54,33 +54,31 @@
     </head>
 
     <body>
-    {% block content %}
-        <div class="container">
-            <div class="row gx-0">
-                <header class="col-3">
-                  {% block header %}
-                    {% include 'layouts/includes/header.html.twig' %}
-                  {% endblock %}
-                </header>
-                <main role="main" class="col-9">
-                    {% block locale_modal %}
-                        {% include '/layouts/includes/locale_modal.html.twig' %}
-                    {% endblock %}
-                    {% block main %}
-                        {% include 'layouts/includes/main.html.twig' %}
-                    {% endblock %}
-                </main>
+        {% block content %}
+            <div class="container">
+                <div class="row">
+                    <header class="col-3">
+                      {% block header %}
+                        {% include 'layouts/includes/header.html.twig' %}
+                      {% endblock %}
+                    </header>
+                    <main role="main" class="col-9">
+                        {% block locale_modal %}
+                            {% include '/layouts/includes/locale_modal.html.twig' %}
+                        {% endblock %}
+                        {% block main %}
+                            {% include 'layouts/includes/main.html.twig' %}
+                        {% endblock %}
+                    </main>
+                </div>
             </div>
-            <div class="row mt-5 mb-3 py-5 rounded bg-light">
-                <footer class="container">
-                  {% block footer %}
+            <footer class="container mt-5 mb-3 py-5 rounded bg-light">
+                {% block footer %}
                     {# include a document-snippet - in this case the footer document #}
                     {{ pimcore_inc(document.getProperty('footer')) }}
-                  {% endblock %}
-                </footer>
-            </div>
-        </div>
-    {% endblock %}
+                {% endblock %}
+            </footer>
+        {% endblock %}
 
         {# output scripts added before #}
         {% block head_scripts deferred %}
