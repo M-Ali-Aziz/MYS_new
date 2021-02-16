@@ -16,12 +16,12 @@ Fields Summary:
 
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
-   'id' => 2,
+   'id' => '2',
    'name' => 'CustomerSegment',
    'description' => NULL,
-   'creationDate' => NULL,
-   'modificationDate' => 1608208773,
-   'userOwner' => NULL,
+   'creationDate' => 0,
+   'modificationDate' => 1613486483,
+   'userOwner' => 0,
    'userModification' => 2,
    'parentClass' => '\\CustomerManagementFrameworkBundle\\Model\\AbstractCustomerSegment',
    'implementsInterfaces' => NULL,

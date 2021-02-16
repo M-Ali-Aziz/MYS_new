@@ -37,7 +37,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Customer',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1608211359,
+   'modificationDate' => 1613486483,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '\\CustomerManagementFrameworkBundle\\Model\\AbstractCustomer\\DefaultAbstractUserawareCustomer',
