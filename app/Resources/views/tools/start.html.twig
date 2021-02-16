@@ -1,7 +1,13 @@
 {% extends 'layouts/layout.html.twig' %}
 
 {% block main %}
+    <h1>{{ 'tools' | trans }}</h1>
 
-<h1>Discover tools</h1>
-
+    {{ pimcore_areablock('toolsAreablock', {
+            'allowed': ['tool-card'],
+            'limits': {
+                'tool-card': 1
+            }
+        })
+    }}
 {% endblock %}

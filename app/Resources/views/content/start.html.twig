@@ -1,8 +1,10 @@
 {% extends 'layouts/layout.html.twig' %}
 
 {% block main %}
+    {# Page title #}
     <h1 class="w-75">{{ pimcore_input('header', {'placeholder' : 'Heading'}) }}</h1>
 
+    {# Video #}
     <div class="mt-3">
         {{ pimcore_video('video', {
             height: 417,
@@ -12,11 +14,15 @@
         }) }}
     </div>
 
-    {{ pimcore_areablock("startPageAreablock", {
-            "allowed": ["tool-card"],
-            "limits": {
+    {# Tools #}
+    <div class="mt-3">
+        <h4>{{ 'discover_tools' | trans }}</h4>
+        {{ pimcore_areablock("startPageAreablock", {
+                "allowed": ["tool-card"],
+                "limits": {
                 "tool-card": 1
-            }
-        })
-    }}
+                }
+            })
+        }}
+    </div>
 {% endblock %}

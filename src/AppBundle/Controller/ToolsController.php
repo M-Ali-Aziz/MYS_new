@@ -6,7 +6,6 @@ use Pimcore\Controller\FrontendController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Pimcore\Model\DataObject\Tools;
-use Pimcore\Model\Asset;
 
 class ToolsController extends BaseController
 {

@@ -1,27 +1,24 @@
 {# Tools Card #}
-<div class="mt-4">
-    <h4>{{ 'discover_tools' | trans }}</h4>
-    <div class="row row-cols-3">
-        {% if tools %}
-            {% for tool in tools %}
-                <div class="col">
-                    <a href="#" class="card text-decoration-none text-dark h-100">
-                        {% if tool.image %}
-                            <img class="card-img-top rounded" height="200" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
-                        {% else %}
-                            <img height="200" class="rounded" src="{{ asset('/static/images/image-not-found.png') }}" alt="tool image">
-                        {% endif %}
-                        <p class="badge bg-light text-dark mt-2 ms-2 p-2 position-absolute">{{ tool.category | trans }}</p>
-                        <div class="card-body p-0 pt-3">
-                            <h4 class="card-title m-0">{{ tool.title }}</h4>
-                            <p class="fw-bold"><small class="text-muted">{{ 'by' | trans }} {{ tool.creator.name }}</small></p>
-                            <p class="card-text">{{ tool.description }}</p>
-                        </div>
-                    </a>
-                </div>
-            {% endfor %}
-        {% else %}
-            <h5>{{ 'no_tools_card_msg' | trans }}</h5>
-        {% endif %}
-    </div>
+<div class="row row-cols-3">
+    {% if tools %}
+        {% for tool in tools %}
+            <div class="col">
+                <a href="#" class="card text-decoration-none text-dark h-100">
+                    {% if tool.image %}
+                        <img class="card-img-top rounded" height="200" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
+                    {% else %}
+                        <img height="200" class="rounded" src="{{ asset('/static/images/image-not-found.png') }}" alt="tool image">
+                    {% endif %}
+                    <p class="badge bg-light text-dark mt-2 ms-2 p-2 position-absolute">{{ tool.category | trans }}</p>
+                    <div class="card-body p-0 pt-3">
+                        <h4 class="card-title m-0">{{ tool.title }}</h4>
+                        <p class="fw-bold"><small class="text-muted">{{ 'by' | trans }} {{ tool.creator.name }}</small></p>
+                        <p class="card-text">{{ tool.description }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h5>{{ 'no_tools_card_msg' | trans }}</h5>
+    {% endif %}
 </div>
