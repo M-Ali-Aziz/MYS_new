@@ -39,3 +39,10 @@ services:
     # Misc Services
     # ---------------------------------------------------------
     AppBundle\Services\PasswordRecoveryService: ~
+
+
+    # ---------------------------------------------------------
+    # Link Generators for DataObjects
+    # ---------------------------------------------------------
+    AppBundle\Website\LinkGenerator\ToolsLinkGenerator:
+        public: true

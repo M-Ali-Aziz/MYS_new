@@ -11,4 +11,12 @@
             }
         }) }}
     </div>
+
+    {{ pimcore_areablock("startPageAreablock", {
+            "allowed": ["tool-card"],
+            "limits": {
+                "tool-card": 1
+            }
+        })
+    }}
 {% endblock %}
