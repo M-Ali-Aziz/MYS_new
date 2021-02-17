@@ -6,7 +6,7 @@ app_localized:
     type:     annotation
     prefix:
         en: /en
-        de: /sv
+        sv: /sv
 
 app:
     resource: "@AppBundle/Controller/"
