@@ -1,0 +1,41 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block main %}
+    <div class="bg-primary rounded-3 position-relative" style="height: 229px">
+        {% if tool.image %}
+            <div class="position-absolute top-50 start-50 translate-middle mt-4">
+                <img class="rounded-3" width="336" height="238" src="{{ tool.image.path ~ tool.image.filename }}" alt="">
+            </div>
+        {% endif %}
+    </div>
+
+    <h2 class="text-center mt-5">{{ tool.title }}</h2>
+    <div class="d-flex justify-content-center">
+        <p class="text-center w-75">{{ tool.description }}</p>
+    </div>
+
+    {# Carousel #}
+    {# TODO image carousel #}
+    <div class="d-flex justify-content-center">
+        <h3 class="text-center w-50">{{ tool.screenshotDescription }}</h3>
+    </div>
+
+    {# Video #}
+    {% if tool.video %}
+        <h2 class="text-center mt-5">{{ 'how_does_it_work_?' | trans }}</h2>
+        <div class="ratio ratio-16x9 mt-3">
+            {% if tool.video.type == 'asset' %}
+                <video poster="{{ tool.video.poster }}" title="{{ tool.video.title }}" controls="controls" class="rounded-3">
+                    <source type="video/mp4" src="{{ tool.video.data.path ~ tool.video.data.filename }}">
+                </video>
+            {% else %}
+                <iframe
+                    src="{{ videoBaseUrl[tool.video.type] ~ tool.video.data }}"
+                    title="{{ tool.video.title }}"
+                    class="rounded-3"
+                    frameborder="0">
+                </iframe>
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
