@@ -9,14 +9,14 @@
         {{ pimcore_video('video', {
             height: 417,
             attributes : {
-                class : 'border border-5 rounded'
+                class : 'border border-5 rounded-3'
             }
         }) }}
     </div>
 
     {# Tools #}
     <div class="mt-3">
-        <h4>{{ 'discover_tools' | trans }}</h4>
+        <h4>{{ pimcore_input('tools_title', {'placeholder': 'Tools title'}) }}</h4>
         {{ pimcore_areablock("startPageAreablock", {
                 "allowed": ["tool-card"],
                 "limits": {
