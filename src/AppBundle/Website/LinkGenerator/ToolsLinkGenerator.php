@@ -2,12 +2,11 @@
 
 namespace AppBundle\Website\LinkGenerator;
 
-use Pimcore\Bundle\EcommerceFrameworkBundle\Model\ProductInterface;
 use Pimcore\Model\DataObject\ClassDefinition\LinkGeneratorInterface;
 use Pimcore\Model\DataObject\Concrete;
 use Pimcore\Model\DataObject\Tools;
 
-class ToolsLinkGenerator implements LinkGeneratorInterface
+class ToolsLinkGenerator extends AbstractLinkGenerator implements LinkGeneratorInterface
 {
     /**
      * @param Concrete $object
@@ -21,6 +20,9 @@ class ToolsLinkGenerator implements LinkGeneratorInterface
             throw new \InvalidArgumentException('Given object is no tool');
         }
 
-        return '/preview/tool/' . $object->getId();
+        return $this->pimcoreUrl->__invoke(
+            ['id' => $object->getId()],
+            'tools_preview'
+        );
     }
 }
