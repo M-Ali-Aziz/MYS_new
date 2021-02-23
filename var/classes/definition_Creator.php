@@ -7,6 +7,7 @@
 
 Fields Summary: 
 - name [input]
+- image [image]
 */ 
 
 
@@ -15,7 +16,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Creator',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1613486483,
+   'modificationDate' => 1614087061,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -130,6 +131,75 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'visibleGridView' => false,
                      'visibleSearch' => false,
                      'defaultValueGenerator' => '',
+                  )),
+                ),
+                 'locked' => false,
+              )),
+            ),
+             'locked' => false,
+             'icon' => '',
+          )),
+          1 => 
+          Pimcore\Model\DataObject\ClassDefinition\Layout\Panel::__set_state(array(
+             'fieldtype' => 'panel',
+             'labelWidth' => 100,
+             'layout' => NULL,
+             'border' => false,
+             'name' => 'Media',
+             'type' => NULL,
+             'region' => NULL,
+             'title' => 'Media',
+             'width' => NULL,
+             'height' => NULL,
+             'collapsible' => false,
+             'collapsed' => false,
+             'bodyStyle' => '',
+             'datatype' => 'layout',
+             'permissions' => NULL,
+             'childs' => 
+            array (
+              0 => 
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldcontainer::__set_state(array(
+                 'fieldtype' => 'fieldcontainer',
+                 'labelWidth' => 100,
+                 'layout' => 'hbox',
+                 'fieldLabel' => '',
+                 'name' => 'Image',
+                 'type' => NULL,
+                 'region' => NULL,
+                 'title' => NULL,
+                 'width' => NULL,
+                 'height' => NULL,
+                 'collapsible' => false,
+                 'collapsed' => false,
+                 'bodyStyle' => '',
+                 'datatype' => 'layout',
+                 'permissions' => NULL,
+                 'childs' => 
+                array (
+                  0 => 
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
+                     'fieldtype' => 'image',
+                     'width' => 94,
+                     'height' => 94,
+                     'uploadPath' => '',
+                     'queryColumnType' => 'int(11)',
+                     'columnType' => 'int(11)',
+                     'phpdocType' => '\\Pimcore\\Model\\Asset\\Image',
+                     'name' => 'image',
+                     'title' => 'Creator image',
+                     'tooltip' => '94px X 94px',
+                     'mandatory' => false,
+                     'noteditable' => false,
+                     'index' => false,
+                     'locked' => false,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'datatype' => 'data',
+                     'relationType' => false,
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
                   )),
                 ),
                  'locked' => false,
