@@ -4,7 +4,7 @@
     <div class="bg-primary rounded-3 position-relative" style="height: 229px">
         {% if tool.image %}
             <div class="position-absolute top-50 start-50 translate-middle mt-4">
-                <img class="rounded-3" width="336" height="238" src="{{ tool.image.path ~ tool.image.filename }}" alt="">
+                <img class="rounded-3" width="336" height="238" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
             </div>
         {% endif %}
     </div>
@@ -15,18 +15,39 @@
     </div>
 
     {# Carousel #}
-    {# TODO image carousel #}
-    <div class="d-flex justify-content-center">
-        <h3 class="text-center w-50">{{ tool.screenshotDescription }}</h3>
-    </div>
+    {% if tool.screenshots %}
+        <div class="d-flex justify-content-center">
+            <div id="toolsDetailCarousel" class="carousel slide mt-5 w-75" data-bs-interval="false">
+                <div class="carousel-inner">
+
+                    {% for img in tool.screenshots %}
+                        <div class="carousel-item {% if loop.first %} active{% endif %}">
+                            <img src="{{ img.screenshot.data }}" height="393" class="d-block w-100 rounded-3" alt="{{ img.screenshot.data.filename }}">
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#toolsDetailCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#toolsDetailCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-3">
+            <h3 class="text-center w-50">{{ tool.screenshotDescription }}</h3>
+        </div>
+    {% endif %}
 
     {# Video #}
     {% if tool.video %}
         <h2 class="text-center mt-5">{{ 'how_does_it_work_?' | trans }}</h2>
-        <div class="ratio ratio-16x9 mt-3">
+        <div class="ratio ratio-16x9 mt-4">
             {% if tool.video.type == 'asset' %}
                 <video poster="{{ tool.video.poster }}" title="{{ tool.video.title }}" controls="controls" class="rounded-3">
-                    <source type="video/mp4" src="{{ tool.video.data.path ~ tool.video.data.filename }}">
+                    <source type="video/mp4" src="{{ tool.video.data }}">
                 </video>
             {% else %}
                 <iframe
@@ -36,6 +57,31 @@
                     frameborder="0">
                 </iframe>
             {% endif %}
+        </div>
+
+        {# Sticky box #}
+        <div class="row fixed-bottom sticky-top bg-light mt-3 p-2 g-0 rounded-3">
+                <div class="col">
+                    {% if tool.image is defined %}
+                        <img class="float-start rounded-3 me-3" width="108" height="78" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
+                    {% endif %}
+                    <h2>{{ tool.title }}</h2>
+                    {% if tool.creator is defined %}
+                        {% if tool.creator.image is defined %}
+                            <img class="float-start rounded-circle me-1" width="25" height="25" src="{{ tool.creator.image }}" alt="{{ tool.creator.image.filename }}">
+                        {% endif %}
+                        <h4 class="m-0">{{ 'by' | trans }} {{ tool.creator.name }}</h4>
+                    {% endif %}
+                </div>
+            <div class="col-3">
+                <h4 class="float-start mt-3">{{ 'free' | trans }}</h4>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-outline-primary mt-2 rounded-pill" aria-label="{{ 'try_tool' | trans }}">
+                        <h3 class="m-0 text-dark">{{ 'try_tool' | trans }}<i class="bi bi-arrow-right align-middle ms-3" role="img" aria-label="{{ 'try_tool' | trans }}"></i>
+                        </h3>
+                    </button>
+                </div>
+            </div>
         </div>
     {% endif %}
 {% endblock %}

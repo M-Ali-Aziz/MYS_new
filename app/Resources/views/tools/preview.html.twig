@@ -6,14 +6,16 @@
     <div class="col-3 mt-4">
         <a href="#" class="card text-decoration-none text-dark border-0">
             {% if tool.image %}
-                <img class="card-img-top rounded" height="200" src="{{ tool.image.path ~ tool.image.filename }}" alt="Card image cap">
+                <img class="card-img-top rounded" height="200" src="{{ tool.image }}" alt="Card image cap">
             {% else %}
                 <img class="card-img-top rounded" height="200" src="" alt="">
             {% endif %}
             <p class="badge bg-light text-dark mt-2 ms-2 p-2 position-absolute">{{ tool.category | trans }}</p>
             <div class="card-body p-0 pt-3">
                 <h4 class="card-title m-0">{{ tool.title }}</h4>
-                <p class="fw-bold"><small class="text-muted">{{ 'by' | trans }} {{ tool.creator.name }}</small></p>
+                {% if tool.creator %}
+                    <p class="fw-bold"><small class="text-muted">{{ 'by' | trans }} {{ tool.creator.name }}</small></p>
+                {% endif %}
                 <p class="card-text">{{ tool.description }}</p>
             </div>
         </a>
