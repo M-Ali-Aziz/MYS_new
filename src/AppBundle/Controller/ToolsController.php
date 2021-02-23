@@ -18,48 +18,39 @@ class ToolsController extends BaseController
     }
 
     /**
-     * @Route({
-     *     "en": "en/tools/{id<\d+>}",
-     *     "sv": "sv/verktyg/{id<\d+>}"
-     * }, name="tools_detail")
+     * @Route("/tools/{tool}", name="tools_detail",  requirements={"tool"="\d+"})
      * @param Request $request
+     * @param Tools $tool
      */
-     public function detailAction(Request $request, int $id)
+     public function detailAction(Request $request, Tools $tool)
      {
-         try {
-             // Get tool
-             $tool = Tools::getById($id);
+         // Set document parent id for dynamic page
+         $docParentId = $request->get('contentDocument')->getParentId();
 
-             $videoBaseUrl = [
-                 'youtube' => 'https://www.youtube.com/embed/',
-                 'vimeo' => 'https://player.vimeo.com/video/',
-                 'dailymotion' => 'https://www.dailymotion.com/embed/video/'
-             ];
+         // Set video embed base url
+         $videoBaseUrl = [
+             'youtube' => 'https://www.youtube.com/embed/',
+             'vimeo' => 'https://player.vimeo.com/video/',
+             'dailymotion' => 'https://www.dailymotion.com/embed/video/'
+         ];
 
-             return $this->render('tools/detail.html.twig', [
-                 'tool' => $tool,
-                 'videoBaseUrl' => $videoBaseUrl,
-             ]);
-         } catch (\Exception $e) {
-             $e->getMessage();
-         }
+         return $this->render('tools/detail.html.twig', [
+             'tool' => $tool,
+             'video_base_url' => $videoBaseUrl,
+             'doc_parent_id' => $docParentId,
+             // TODO: send page title for dynamic page
+         ]);
      }
 
     /**
-     * @Route("/preview/tool/{id}", name="tolls_preview")
+     * @Route("/preview/tools/{tool}", name="tools_preview")
      * @param Request $request
+     * @param Tools $tool
      */
-    public function previewAction(Request $request, int $id)
+    public function previewAction(Request $request, Tools $tool)
     {
-        try {
-            // Get tool
-            $tool = Tools::getById($id);
-
-            return $this->render('tools/preview.html.twig', [
-                'tool' => $tool,
-            ]);
-        } catch (\Exception $e) {
-            $e->getMessage();
-        }
+        return $this->render('tools/preview.html.twig', [
+            'tool' => $tool,
+        ]);
     }
 }

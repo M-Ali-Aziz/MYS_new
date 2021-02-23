@@ -1,8 +1,3 @@
-{# get root node if there is no document defined (for pages which are routed directly through static route) #}
-{% if not document is defined or not document %}
-    {% set document = pimcore_document(1) %}
-{% endif %}
-
 {# get the document which should be used to start in navigation | default home #}
 {% set navStartNode = document.getProperty('navigation_root') %}
 

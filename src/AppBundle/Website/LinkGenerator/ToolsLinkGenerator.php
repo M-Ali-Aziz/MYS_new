@@ -21,7 +21,7 @@ class ToolsLinkGenerator extends AbstractLinkGenerator implements LinkGeneratorI
         }
 
         return $this->pimcoreUrl->__invoke(
-            ['id' => $object->getId()],
+            ['tool' => $object->getId()],
             'tools_preview'
         );
     }

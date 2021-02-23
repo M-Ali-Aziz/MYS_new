@@ -21,8 +21,13 @@
             {# Optional JavaScript #}
             {% do pimcore_head_script().appendFile(asset('static/js/main.js')) %}
 
+            {# Document #}
             {% if not document is defined or not document %}
-                {% set document = pimcore_document(1) %}
+                {% if doc_parent_id is defined %}
+                    {% set document = pimcore_document(doc_parent_id) %}
+                {% else %}
+                    {% set document = pimcore_document(1) %}
+                {% endif %}
             {% endif %}
 
             {% if document is instanceof('\\Pimcore\\Model\\Document\\Link') %}

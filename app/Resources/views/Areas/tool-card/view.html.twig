@@ -3,7 +3,7 @@
     {% if tools %}
         {% for tool in tools %}
             <div class="col">
-                <a href="{{ path('tools_detail', {id: tool.id}) }}" class="card text-decoration-none text-dark h-100">
+                <a href="{{ path('tools_detail', {tool: tool.id}) }}" class="card text-decoration-none text-dark h-100">
                     {% if tool.image %}
                         <img class="card-img-top rounded" height="200" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
                     {% else %}
