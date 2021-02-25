@@ -11,10 +11,10 @@
 
     <h2 class="text-center mt-5">{{ tool.title }}</h2>
     <div class="d-flex justify-content-center">
-        <p class="text-center w-75">{{ tool.description }}</p>
+        <p class="text-center w-75">{{ tool.aboutTool }}</p>
     </div>
 
-    {# Carousel #}
+    {# Carousel/Slideshow #}
     {% if tool.screenshots %}
         <div class="d-flex justify-content-center">
             <div id="toolsDetailCarousel" class="carousel slide mt-5 w-75" data-bs-interval="false">
@@ -23,6 +23,11 @@
                     {% for img in tool.screenshots %}
                         <div class="carousel-item {% if loop.first %} active{% endif %}">
                             <img src="{{ img.screenshot.data }}" height="393" class="d-block w-100 rounded-3" alt="{{ img.screenshot.data.filename }}">
+                            {% if img.localizedfields.data.InternalData[app.request.locale] is defined %}
+                                <div class="carousel-caption d-none d-md-block">
+                                    <p>{{ img.localizedfields.data.InternalData[app.request.locale].screenshotDescription }}</p>
+                                </div>
+                            {% endif %}
                         </div>
                     {% endfor %}
 
@@ -36,9 +41,9 @@
             </div>
         </div>
 
-        <div class="d-flex justify-content-center mt-3">
-            <h3 class="text-center w-50">{{ tool.screenshotDescription }}</h3>
-        </div>
+        {# <div class="d-flex justify-content-center mt-3">
+            <h3 class="text-center w-50">{{ 'tool.screenshotDescription' }}</h3>
+        </div> #}
     {% endif %}
 
     {# Video #}
@@ -62,13 +67,13 @@
         {# Sticky box #}
         <div class="row fixed-bottom sticky-top bg-light mt-3 p-2 g-0 rounded-3">
                 <div class="col">
-                    {% if tool.image is defined %}
+                    {% if tool.image %}
                         <img class="float-start rounded-3 me-3" width="108" height="78" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
                     {% endif %}
                     <h2>{{ tool.title }}</h2>
-                    {% if tool.creator is defined %}
-                        {% if tool.creator.image is defined %}
-                            <img class="float-start rounded-circle me-1" width="25" height="25" src="{{ tool.creator.image }}" alt="{{ tool.creator.image.filename }}">
+                    {% if tool.creator %}
+                        {% if tool.creator.image %}
+                            <img class="float-start rounded-circle me-1" width="25" height="25" src="{{ tool.creator.image }}" alt="{{ tool.creator.image }}">
                         {% endif %}
                         <h4 class="m-0">{{ 'by' | trans }} {{ tool.creator.name }}</h4>
                     {% endif %}

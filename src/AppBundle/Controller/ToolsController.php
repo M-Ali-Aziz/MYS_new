@@ -10,7 +10,7 @@ use Pimcore\Model\DataObject\Tools;
 class ToolsController extends BaseController
 {
     /**
-     * @Route("/tools", name="tolls_start")
+     * @Route("/tools", name="tools_start")
      * @param Request $request
      */
     public function startAction(Request $request)
