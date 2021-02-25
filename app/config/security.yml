@@ -1,6 +1,6 @@
 pimcore:
     security:
-        # the encoder factory as shipped by the CMF
+        # The encoder factory as shipped by the CMF
         encoder_factories:
             Pimcore\Model\DataObject\Customer: cmf.security.user_password_encoder_factory
 
@@ -8,8 +8,8 @@ pimcore:
 # http://symfony.com/doc/current/security.html
 security:
     providers:
-        # we use a custom user provider which loads users from the Customer class
-        # the user provider is provided by the CMF
+        # We use a custom user provider which loads users from the Customer class
+        # The user provider is provided by the CMF
         cmf_customer_provider:
             id: cmf.security.user_provider #cmf.security.user_provider.oauth
 
@@ -32,21 +32,21 @@ security:
             #   SAMPLE FIREWALL CONFIG FOR FORM-AUTH
             # -----------------------------------------------------
 
-            # the provider defined above
+            # The provider defined above
             anonymous: ~
-            # the provider defined above
+            # The provider defined above
             provider: cmf_customer_provider
             form_login:
-                login_path: 'account-login'
-                check_path: 'account-login'
+                login_path: 'account_login'
+                check_path: 'account_login'
                 csrf_token_generator: security.csrf.token_manager
-                default_target_path: 'account-index'
+                default_target_path: 'tools_start'
 
             logout:
-                path:   'account-logout'
-                target: /
+                path:   'account_logout'
+                target: 'account_login'
 
-                # optional: to keep logins of other firewalls (like admin)
+                # Optional: to keep logins of other firewalls (like admin)
                 invalidate_session: false
 
             logout_on_user_change: true

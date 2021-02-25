@@ -30,7 +30,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class AccountController extends BaseController
 {
     /**
-     * @Route("/account/login", name="account-login")
+     * @Route("/account/login", name="account_login")
      *
      * @param AuthenticationUtils $authenticationUtils
      * @param SessionInterface $session
@@ -46,9 +46,9 @@ class AccountController extends BaseController
         UserInterface $user = null
     ) {
 
-        // Redirect user to index page if logged in
+        // Redirect user to tools-start page if logged in
         if ($user && $this->isGranted('ROLE_USER')) {
-            return $this->redirectToRoute('account-index');
+            return $this->redirectToRoute('tools_start');
         }
 
         // Get the login error if there is one
@@ -62,7 +62,7 @@ class AccountController extends BaseController
         ];
 
         $form = $this->createForm(LoginFormType::class, $formData, [
-            'action' => $this->generateUrl('account-login'),
+            'action' => $this->generateUrl('account_login'),
         ]);
 
         // Store referer in session to get redirected after login
@@ -78,7 +78,7 @@ class AccountController extends BaseController
 
     /**
      *
-     * @Route("/account/register", name="account-register")
+     * @Route("/account/register", name="account_register")
      *
      * @param Request $request
      * @param CustomerProviderInterface $customerProvider
@@ -104,7 +104,7 @@ class AccountController extends BaseController
     ) {
         // Redirect user to index page if logged in
         if ($user && $this->isGranted('ROLE_USER')) {
-            return $this->redirectToRoute('account-index');
+            return $this->redirectToRoute('account_index');
         }
 
         // Create a new, empty customer instance
@@ -133,7 +133,7 @@ class AccountController extends BaseController
                     $response = $this->redirect($session->get('referrer'));
                     $session->remove('referrer');
                 } else {
-                    $response = $this->redirectToRoute('account-index');
+                    $response = $this->redirectToRoute('account_index');
                 }
 
                 // Log user in manually
@@ -146,7 +146,7 @@ class AccountController extends BaseController
                     'account.customer-already-exists',
                     [
                         $customer->getEmail(),
-                        $urlGenerator->generate('account-password-send-recovery', ['email' => $customer->getEmail()])
+                        $urlGenerator->generate('account_password_send_recovery', ['email' => $customer->getEmail()])
                     ]
                 );
             } catch (\Exception $e) {
@@ -169,7 +169,7 @@ class AccountController extends BaseController
     }
 
     /**
-     * @Route("/account/send-password-recovery", name="account-password-send-recovery")
+     * @Route("/account/send-password-recovery", name="account_password_send_recovery")
      *
      * @param Request $request
      * @param PasswordRecoveryService $service
@@ -184,7 +184,7 @@ class AccountController extends BaseController
             $service->sendRecoveryMail($request->get('email', ''), $this->document->getProperty('password_reset_mail'));
             $this->addFlash('success', $translator->trans('account.reset-mail-sent-when-possible'));
 
-            return $this->redirectToRoute('account-login', ['no-referer-redirect' => true]);
+            return $this->redirectToRoute('account_login', ['no-referer-redirect' => true]);
         }
 
         return [
@@ -193,7 +193,7 @@ class AccountController extends BaseController
     }
 
     /**
-     * @Route("/account/reset-password", name="account-reset-password")
+     * @Route("/account/reset-password", name="account_reset_password")
      *
      * @param Request $request
      * @param PasswordRecoveryService $service
@@ -216,7 +216,7 @@ class AccountController extends BaseController
 
             $this->addFlash('success', $translator->trans('account.password-reset-successful'));
 
-            return $this->redirectToRoute('account-login', ['no-referer-redirect' => true]);
+            return $this->redirectToRoute('account_login', ['no-referer-redirect' => true]);
         }
 
         return [
@@ -228,12 +228,10 @@ class AccountController extends BaseController
     /**
      * Index page for account
      *
-     * @Route("/account/index", name="account-index")
+     * @Route("/account/index", name="account_index")
+     * @param Request $request
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return new Response(
-            '<h1>index page</h1>'
-        );
     }
 }

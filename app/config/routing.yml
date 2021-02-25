@@ -12,5 +12,5 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
-account-logout:
+account_logout:
     path: '{_locale}/account/logout'
