@@ -7,14 +7,14 @@ use Pimcore\Model\DataObject\Tools;
 /**
  * Tool Card Areabrick
  */
-class ToolCard extends AbstractAreabrick
+class ToolCards extends AbstractAreabrick
 {
     /**
      * {@inheritdoc}
      */
     public function getName()
     {
-        return 'Tool Card';
+        return 'Tool Cards';
     }
 
     /**

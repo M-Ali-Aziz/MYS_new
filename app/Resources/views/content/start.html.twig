@@ -2,7 +2,7 @@
 
 {% block main %}
     {# Page title #}
-    <h1 class="w-75">{{ pimcore_input('header', {'placeholder' : 'Heading'}) }}</h1>
+    <h1 class="w-75">{{ pimcore_input('header', {'placeholder': 'Heading'}) }}</h1>
 
     {# Video #}
     <div class="mt-3">
@@ -16,12 +16,12 @@
 
     {# Tools #}
     <div class="mt-3">
-        <h4>{{ pimcore_input('tools_title', {'placeholder': 'Tools title'}) }}</h4>
+        <h4>{{ pimcore_input('toolsTitle', {'placeholder': 'Tools title'}) }}</h4>
         {{ pimcore_areablock("startPageAreablock", {
-                "allowed": ["tool-card"],
+                "allowed": ["tool-cards"],
                 "limits": {
-                "tool-card": 1
-                }
+                "tool-cards": 1
+                },
             })
         }}
     </div>

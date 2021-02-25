@@ -1,8 +1,8 @@
 {# Tools Card #}
-<div class="row row-cols-3 g-5">
+<div class="row row-cols-3 gx-5 gb-5">
     {% if tools %}
         {% for tool in tools %}
-            <div class="col">
+            <div class="col mb-5">
                 <a href="{{ path('tools_detail', {tool: tool.id}) }}" class="card text-decoration-none text-dark h-100">
                     {% if tool.image %}
                         <img class="card-img-top rounded" height="200" src="{{ tool.image }}" alt="{{ tool.image.filename }}">

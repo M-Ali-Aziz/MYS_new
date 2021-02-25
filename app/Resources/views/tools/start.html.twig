@@ -1,12 +1,12 @@
 {% extends 'layouts/layout.html.twig' %}
 
 {% block main %}
-    <h1>{{ 'tools' | trans }}</h1>
+    <h1>{{ pimcore_input('productTeaserTitle', {'toolsTitle':'Tools Title'}) }}</h1>
 
     {{ pimcore_areablock('toolsAreablock', {
-            'allowed': ['tool-card'],
+            'allowed': ['tool-cards'],
             'limits': {
-                'tool-card': 1
+                'tool-cards': 1
             }
         })
     }}
