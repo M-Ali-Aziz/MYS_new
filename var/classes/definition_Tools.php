@@ -16,6 +16,7 @@ Fields Summary:
 -- screenshot [image]
 -- localizedfields [localizedfields]
 --- screenshotDescription [input]
+- embedLoom [textarea]
 - video [video]
 - creator [manyToOneRelation]
 - category [select]
@@ -34,7 +35,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Tools',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1614260537,
+   'modificationDate' => 1614339929,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -169,7 +170,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'phpdocType' => 'string',
                          'name' => 'description',
                          'title' => 'Description',
-                         'tooltip' => '',
+                         'tooltip' => 'Tool Card Description',
                          'mandatory' => false,
                          'noteditable' => false,
                          'index' => false,
@@ -195,7 +196,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'phpdocType' => 'string',
                          'name' => 'aboutTool',
                          'title' => 'About the tool',
-                         'tooltip' => '',
+                         'tooltip' => 'Tool detail page description',
                          'mandatory' => false,
                          'noteditable' => false,
                          'index' => false,
@@ -498,6 +499,86 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'childs' => 
                 array (
                   0 => 
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Text::__set_state(array(
+                     'fieldtype' => 'text',
+                     'html' => '<div class="alert alert-info" style="margin-bottom:0;">
+Loom embed code:
+<div class="alert alert-warning" style="margin-bottom:0;">
+Add the following class-attribute value to the iframe tag:
+<div class="alert-danger">class="rounded-3"</div>
+</div>
+</div>',
+                     'renderingClass' => '',
+                     'renderingData' => '',
+                     'border' => false,
+                     'name' => 'Layout',
+                     'type' => NULL,
+                     'region' => NULL,
+                     'title' => '',
+                     'width' => 1000,
+                     'height' => NULL,
+                     'collapsible' => false,
+                     'collapsed' => false,
+                     'bodyStyle' => '',
+                     'datatype' => 'layout',
+                     'permissions' => NULL,
+                     'childs' => 
+                    array (
+                    ),
+                     'locked' => false,
+                  )),
+                  1 => 
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Textarea::__set_state(array(
+                     'fieldtype' => 'textarea',
+                     'width' => 900,
+                     'height' => 100,
+                     'maxLength' => NULL,
+                     'showCharCount' => false,
+                     'excludeFromSearchIndex' => false,
+                     'queryColumnType' => 'longtext',
+                     'columnType' => 'longtext',
+                     'phpdocType' => 'string',
+                     'name' => 'embedLoom',
+                     'title' => '',
+                     'tooltip' => '',
+                     'mandatory' => false,
+                     'noteditable' => false,
+                     'index' => false,
+                     'locked' => NULL,
+                     'style' => 'margin-bottom: 30px;',
+                     'permissions' => NULL,
+                     'datatype' => 'data',
+                     'relationType' => false,
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                  )),
+                  2 => 
+                  Pimcore\Model\DataObject\ClassDefinition\Layout\Text::__set_state(array(
+                     'fieldtype' => 'text',
+                     'html' => '<div class="alert alert-info" style="margin-bottom:0;">
+Other format ( Asset, Youtube, Vimeo and Dailymotion ):
+</div>',
+                     'renderingClass' => '',
+                     'renderingData' => '',
+                     'border' => false,
+                     'name' => 'Layout',
+                     'type' => NULL,
+                     'region' => NULL,
+                     'title' => '',
+                     'width' => 600,
+                     'height' => NULL,
+                     'collapsible' => false,
+                     'collapsed' => false,
+                     'bodyStyle' => '',
+                     'datatype' => 'layout',
+                     'permissions' => NULL,
+                     'childs' => 
+                    array (
+                    ),
+                     'locked' => false,
+                  )),
+                  3 => 
                   Pimcore\Model\DataObject\ClassDefinition\Data\Video::__set_state(array(
                      'fieldtype' => 'video',
                      'width' => 600,

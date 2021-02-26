@@ -1,7 +1,7 @@
 {% extends 'layouts/layout.html.twig' %}
 
 {% block main %}
-    <div class="bg-primary rounded-3 position-relative" style="height: 229px">
+    <div class="rounded-3 position-relative" style="height: 229px;{% if tool.backgroundColor.hex is defined %}background-color: {{ tool.backgroundColor.hex }};{% endif %}">
         {% if tool.image %}
             <div class="position-absolute top-50 start-50 translate-middle mt-4">
                 <img class="rounded-3" width="336" height="238" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
@@ -41,13 +41,19 @@
             </div>
         </div>
 
+        {# TODO #}
         {# <div class="d-flex justify-content-center mt-3">
             <h3 class="text-center w-50">{{ 'tool.screenshotDescription' }}</h3>
         </div> #}
     {% endif %}
 
     {# Video #}
-    {% if tool.video %}
+    {% if tool.embedLoom %}
+        <h2 class="text-center mt-5">{{ 'how_does_it_work_?' | trans }}</h2>
+        <div class="ratio ratio-16x9 mt-4">
+            {{ tool.embedLoom | raw }}
+        </div>
+    {% elseif tool.video %}
         <h2 class="text-center mt-5">{{ 'how_does_it_work_?' | trans }}</h2>
         <div class="ratio ratio-16x9 mt-4">
             {% if tool.video.type == 'asset' %}
@@ -63,30 +69,30 @@
                 </iframe>
             {% endif %}
         </div>
+    {% endif %}
 
-        {# Sticky box #}
-        <div class="row fixed-bottom sticky-top bg-light mt-3 p-2 g-0 rounded-3">
-                <div class="col">
-                    {% if tool.image %}
-                        <img class="float-start rounded-3 me-3" width="108" height="78" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
+    {# Sticky box #}
+    <div class="row fixed-bottom sticky-top bg-light mt-3 p-2 g-0 rounded-3">
+            <div class="col">
+                {% if tool.image %}
+                    <img class="float-start rounded-3 me-3" width="108" height="78" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
+                {% endif %}
+                <h2>{{ tool.title }}</h2>
+                {% if tool.creator %}
+                    {% if tool.creator.image %}
+                        <img class="float-start rounded-circle me-1" width="25" height="25" src="{{ tool.creator.image }}" alt="{{ tool.creator.image }}">
                     {% endif %}
-                    <h2>{{ tool.title }}</h2>
-                    {% if tool.creator %}
-                        {% if tool.creator.image %}
-                            <img class="float-start rounded-circle me-1" width="25" height="25" src="{{ tool.creator.image }}" alt="{{ tool.creator.image }}">
-                        {% endif %}
-                        <h4 class="m-0">{{ 'by' | trans }} {{ tool.creator.name }}</h4>
-                    {% endif %}
-                </div>
-            <div class="col-3">
-                <h4 class="float-start mt-3">{{ 'free' | trans }}</h4>
-                <div class="d-flex justify-content-end">
-                    <a role="button" class="btn btn-outline-primary mt-2 rounded-pill" href="#" aria-label="{{ 'try_tool' | trans }}">
-                        <h3 class="m-0 text-dark">{{ 'try_tool' | trans }}<i class="bi bi-arrow-right align-middle ms-3" role="img" aria-label="{{ 'try_tool' | trans }}"></i>
-                        </h3>
-                    </a>
-                </div>
+                    <h4 class="m-0">{{ 'by' | trans }} {{ tool.creator.name }}</h4>
+                {% endif %}
+            </div>
+        <div class="col-3">
+            <h4 class="float-start mt-3">{{ 'free' | trans }}</h4>
+            <div class="d-flex justify-content-end">
+                <a role="button" class="btn btn-outline-primary mt-2 rounded-pill" href="#" aria-label="{{ 'try_tool' | trans }}">
+                    <h3 class="m-0 text-dark">{{ 'try_tool' | trans }}<i class="bi bi-arrow-right align-middle ms-3" role="img" aria-label="{{ 'try_tool' | trans }}"></i>
+                    </h3>
+                </a>
             </div>
         </div>
-    {% endif %}
+    </div>
 {% endblock %}
