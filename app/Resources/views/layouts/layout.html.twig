@@ -62,12 +62,12 @@
         {% block content %}
             <div class="container">
                 <div class="row">
-                    <header class="col-3">
+                    <header class="col-12 col-lg-3">
                       {% block header %}
                         {% include 'layouts/includes/header.html.twig' %}
                       {% endblock %}
                     </header>
-                    <main role="main" class="col-9">
+                    <main role="main" class="col-12 col-lg-9">
                         {% block locale_modal %}
                             {% include '/layouts/includes/locale_modal.html.twig' %}
                         {% endblock %}

@@ -10,29 +10,42 @@
     root: navStartNode
 }) %}
 
-{# Navigation sidebar left #}
-<nav class="sticky-top pt-5">
-    <ul class="nav flex-column">
-        {# Logo Image #}
-        <li class="nav-item mb-4">
-            <a href="{{ navStartNode }}">
-                <img id="logo" src="{{ asset('/static/images/logo.svg') }}" width="120" height="70" alt="logo" loading="lazy">
-            </a>
-        </li>
 
-        {# Links #}
-        {% for link in mainNavigation|filter(link => link.visible == true) %}
-              <li class="nav-item pl-4">
-                <a class="nav-link text-dark {% if link.active %}font-weight-bold active{% endif %}" href="{{ link.uri }}">{{ link.label}}</a>
-              </li>
-        {% endfor %}
+<nav class="navbar navbar-expand-lg navbar-light sticky-top p-0">
+    {# Logo Image #}
+    <a class="d-lg-none mt-2" href="{{ navStartNode }}">
+    <img id="logo" src="{{ asset('/static/images/logo.svg') }}" width="120" height="70" alt="logo" loading="lazy">
+    </a>
 
-        {# Login & Signup Links #}
-        <li class="nav-item mt-4 pl-4">
-            <a class="nav-link text-dark" href="{{ path('account_login') }}">{{ 'login' | trans }}</a>
-        </li>
-        <li class="nav-item me-auto btn-primary rounded-pill">
-            <a class="nav-link text-dark" href="{{ path('account_register') }}">{{ 'signup' | trans }}</a>
-        </li>
-    </ul>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav flex-column">
+            {# Logo Image #}
+            <li class="nav-item mb-4 mt-5 d-none d-lg-block">
+                <a href="{{ navStartNode }}">
+                    <img id="logo" src="{{ asset('/static/images/logo.svg') }}" width="120" height="70" alt="logo" loading="lazy">
+                </a>
+            </li>
+
+            {# Links #}
+            <div class="mt-4">
+                {% for link in mainNavigation | filter(link => link.visible == true) %}
+                      <li class="nav-item ps-4">
+                  <a class="nav-link text-dark {% if link.active %}fw-bold active{% endif %}" href="{{ link.uri }}">{{ link.label}}</a>
+                      </li>
+                {% endfor %}
+            </div>
+
+            {# Login & Signup Links #}
+            <li class="nav-item mt-4 ps-4">
+        <a class="nav-link text-dark {{ app.request.get('_route') == 'account_login' ? 'fw-bold active' }}" href="{{ path('account_login') }}">{{ 'login' | trans }}</a>
+            </li>
+            <li class="nav-item me-auto btn-primary rounded-pill px-4">
+                <a class="nav-link text-dark {{ app.request.get('_route') == 'account_register' ? 'fw-bold active' }}" href="{{ path('account_register') }}">{{ 'signup' | trans }}</a>
+            </li>
+        </ul>
+    </div>
 </nav>

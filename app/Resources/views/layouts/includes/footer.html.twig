@@ -3,7 +3,7 @@
         <h3 class="float-strat">{{ 'Footer Column(s):' }}</h3>
     {% endif %}
     {% for i in pimcore_iterate_block(pimcore_block('mainlinkblock')) %}
-        <div class="col-2">
+        <div class="col-6 col-lg-2">
             <p class="fw-bold">{{ pimcore_input('mainBlockTitle', {'placeholder': 'Footer Title'}) }}</p>
             {% for i in pimcore_iterate_block(pimcore_block('linkblock')) %}
                 <p>{{ pimcore_link('mainBlockLink', {'class': ""}) }}</p>
