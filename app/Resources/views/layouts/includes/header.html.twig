@@ -44,7 +44,7 @@
         <a class="nav-link text-dark {{ app.request.get('_route') == 'account_login' ? 'fw-bold active' }}" href="{{ path('account_login') }}">{{ 'login' | trans }}</a>
             </li>
             <li class="nav-item me-auto btn-primary rounded-pill px-4">
-                <a class="nav-link text-dark {{ app.request.get('_route') == 'account_register' ? 'fw-bold active' }}" href="{{ path('account_register') }}">{{ 'signup' | trans }}</a>
+                <a class="nav-link text-light {{ app.request.get('_route') == 'account_register' ? 'fw-bold active' }}" href="{{ path('account_register') }}">{{ 'signup' | trans }}</a>
             </li>
         </ul>
     </div>

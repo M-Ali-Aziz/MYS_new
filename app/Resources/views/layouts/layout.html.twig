@@ -60,9 +60,9 @@
 
     <body>
         {% block content %}
-            <div class="container">
+            <div class="container-fluid container-lg">
                 <div class="row">
-                    <header class="col-12 col-lg-3">
+                    <header class="col-12 col-lg-3 sticky-top">
                       {% block header %}
                         {% include 'layouts/includes/header.html.twig' %}
                       {% endblock %}
@@ -77,7 +77,7 @@
                     </main>
                 </div>
             </div>
-            <footer class="container mt-5 mb-3 py-5 rounded bg-light">
+            <footer class="container-fluid container-lg mt-5 mb-3 py-5 rounded bg-light">
                 {% block footer %}
                     {# include a document-snippet - in this case the footer document #}
                     {{ pimcore_inc(document.getProperty('footer')) }}
