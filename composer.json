@@ -8,7 +8,8 @@
     "sort-packages": true
   },
   "require": {
-    "pimcore/pimcore": "^10.0"
+    "pimcore/pimcore": "^10.0",
+    "pimcore/customer-management-framework-bundle": "^3"
   },
   "require-dev": {
     "cache/integration-tests": "^0.17.0",
