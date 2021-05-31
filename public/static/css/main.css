@@ -1,0 +1,10 @@
+/*********************
+* MYS Custom styling (START) -->
+*********************/
+.mys__not-focusable:focus {
+    box-shadow: none;
+}
+
+/*********************
+* MYS Custom styling  <-- (END)
+*********************/
