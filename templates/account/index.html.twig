@@ -1,0 +1,9 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block main %}
+    <h1>Index/Profile page</h1>
+    <a href="{{ path('account_logout') }}" class="btn btn-primary stretched-link">
+        Logout
+        <i class="bi bi-box-arrow-right ms-2"></i>
+    </a>
+{% endblock %}
