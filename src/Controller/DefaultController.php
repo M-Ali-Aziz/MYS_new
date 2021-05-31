@@ -14,7 +14,7 @@ class DefaultController extends FrontendController
      * @param Request $request
      * @return array
      */
-    public function defaultAction(Request $request)
+    public function defaultAction(Request $request): array
     {
         return [];
     }

@@ -1,6 +1,6 @@
 <div class="row text-center">
     {% if editmode %}
-        <h3 class="float-strat">{{ 'Footer Column(s):' }}</h3>
+        <h3 class="float-start">{{ 'Footer Column(s):' }}</h3>
     {% endif %}
     {% for i in pimcore_iterate_block(pimcore_block('mainlinkblock')) %}
         <div class="col-12 col-lg-2 mb-3 mb-lg-0">
@@ -10,12 +10,12 @@
             {% endfor %}
         </div>
         {% if editmode %}
-            <hr />
+            <hr/>
         {% endif %}
     {% endfor %}
 </div>
 
 {% if editmode %}
-    <h3 class="float-strat">{{ 'Footer Text:' }}</h3>
+    <h3 class="float-start">{{ 'Footer Text:' }}</h3>
 {% endif %}
 <p class="text-center mt-4 fw-bold">{{ pimcore_input('madeTitle', {'placeholder': 'Made with LOVE in Sweden'}) }}</p>
