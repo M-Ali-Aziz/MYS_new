@@ -55,6 +55,18 @@ services:
         tags: [ 'console.command' ]
 
 
+    # ---------------------------------------------------------
+    # Forms
+    # ---------------------------------------------------------
+    App\Form\LoginFormType: ~
+    App\Form\RegistrationFormType: ~
+    App\Form\RegistrationFormHandler: ~
+
+
+    # ---------------------------------------------------------
+    # Misc Services
+    # ---------------------------------------------------------
+    App\Services\PasswordRecoveryService: ~
 
     # Example custom templating helper
     # App\Templating\Helper\Example:

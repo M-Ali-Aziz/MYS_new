@@ -2,6 +2,10 @@ security:
     providers:
         pimcore_admin:
             id: Pimcore\Bundle\AdminBundle\Security\User\UserProvider
+        # We use a custom user provider which loads users from the Customer class
+        # The user provider is provided by the CMF
+        cmf_customer_provider:
+            id: cmf.security.user_provider #cmf.security.user_provider.oauth
 
     firewalls:
         dev:
@@ -38,6 +42,42 @@ security:
                 auth_code_parameter_name: _auth_code   # Name of the parameter for the two-factor authentication code
                 trusted_parameter_name: _trusted       # Name of the parameter for the trusted device option
                 multi_factor: false                    # If ALL active two-factor methods need to be fulfilled (multi-factor authentication)
+
+        # mys_main firewall is valid for the whole site
+        mys_main:
+
+            # -----------------------------------------------------
+            #   SAMPLE SIMPLE FIREWALL CONFIG FOR HTTP-BASIC AUTH
+            # -----------------------------------------------------
+            # the provider defined above
+            # provider: cmf_customer_provider
+            # http_basic: ~
+
+
+            # -----------------------------------------------------
+            #   SAMPLE FIREWALL CONFIG FOR FORM-AUTH
+            # -----------------------------------------------------
+
+            # The provider defined above
+            anonymous: ~
+            # The provider defined above
+            provider: cmf_customer_provider
+            form_login:
+                login_path: 'account_login'
+                check_path: 'account_login'
+                csrf_token_generator: security.csrf.token_manager
+                default_target_path: 'tools_start'
+
+            logout:
+                path: 'account_logout'
+                target: 'account_login'
+
+                # Optional: to keep logins of other firewalls (like admin)
+                invalidate_session: false
+
+            remember_me:
+                secret: '%kernel.secret%'
+                # always_remember_me: true
 
         cmf_webservice: '%customer_management_framework.firewall_settings%'
 

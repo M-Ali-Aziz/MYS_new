@@ -29,9 +29,10 @@ services:
 # CMF Config
 # ---------------------------------------------------------
 pimcore:
-    models:
-        class_overrides:
-            Pimcore\Model\DataObject\Customer: AppBundle\Model\Customer
+    security:
+        # the encoder factory as shipped by the CMF
+        encoder_factories:
+            Pimcore\Model\DataObject\Customer: cmf.security.user_password_encoder_factory
 
 pimcore_customer_management_framework:
 

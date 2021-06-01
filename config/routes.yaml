@@ -13,5 +13,5 @@ app:
     resource: "../src/Controller/"
     type: annotation
 
-account-logout:
+account_logout:
     path: '{_locale}/account/logout'
