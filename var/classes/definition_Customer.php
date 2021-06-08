@@ -11,6 +11,7 @@ Fields Summary:
 - lastname [lastname]
 - gender [select]
 - birthdate [date]
+- customerLanguage [language]
 - street [input]
 - zip [input]
 - city [input]
@@ -31,7 +32,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Customer',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1621598669,
+   'modificationDate' => 1622541720,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '\\CustomerManagementFrameworkBundle\\Model\\AbstractCustomer\\DefaultAbstractUserawareCustomer',
@@ -271,6 +272,36 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'noteditable' => false,
                          'index' => false,
                          'locked' => false,
+                         'style' => '',
+                         'permissions' => NULL,
+                         'datatype' => 'data',
+                         'relationType' => false,
+                         'invisible' => false,
+                         'visibleGridView' => false,
+                         'visibleSearch' => false,
+                         'blockedVarsForExport' => 
+                        array (
+                        ),
+                         'defaultValueGenerator' => '',
+                      )),
+                      4 => 
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Language::__set_state(array(
+                         'fieldtype' => 'language',
+                         'onlySystemLanguages' => false,
+                         'options' => NULL,
+                         'width' => 0,
+                         'defaultValue' => NULL,
+                         'optionsProviderClass' => NULL,
+                         'optionsProviderData' => NULL,
+                         'columnLength' => 190,
+                         'dynamicOptions' => false,
+                         'name' => 'customerLanguage',
+                         'title' => 'Language',
+                         'tooltip' => '',
+                         'mandatory' => false,
+                         'noteditable' => false,
+                         'index' => false,
+                         'locked' => NULL,
                          'style' => '',
                          'permissions' => NULL,
                          'datatype' => 'data',

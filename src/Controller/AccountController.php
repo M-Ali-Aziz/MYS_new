@@ -10,9 +10,9 @@ use CustomerManagementFrameworkBundle\CustomerSaveValidator\Exception\DuplicateC
 use CustomerManagementFrameworkBundle\Model\CustomerInterface;
 use App\Services\PasswordRecoveryService;
 use CustomerManagementFrameworkBundle\Security\Authentication\LoginManagerInterface;
-use Pimcore\Bundle\EcommerceFrameworkBundle\Factory;
 use Pimcore\Controller\FrontendController;
 use Pimcore\Translation\Translator;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,6 +31,8 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class AccountController extends FrontendController
 {
     /**
+     * @Template
+     *
      * @Route("/account/login", name="account_login")
      *
      * @param AuthenticationUtils $authenticationUtils
@@ -45,7 +47,8 @@ class AccountController extends FrontendController
         SessionInterface $session,
         Request $request,
         UserInterface $user = null
-    ) {
+    ): RedirectResponse|array
+    {
 
         // Redirect user to tools-start page if logged in
         if ($user && $this->isGranted('ROLE_USER')) {
@@ -78,7 +81,6 @@ class AccountController extends FrontendController
     }
 
     /**
-     *
      * @Route("/account/register", name="account_register")
      *
      * @param Request $request
@@ -90,7 +92,7 @@ class AccountController extends FrontendController
      * @param UrlGeneratorInterface $urlGenerator
      * @param UserInterface|null $user
      *
-     * @return array|RedirectResponse
+     * @return Response|RedirectResponse
      */
     public function registerAction(
         Request $request,
@@ -102,7 +104,8 @@ class AccountController extends FrontendController
         UrlGeneratorInterface $urlGenerator,
         UserInterface $user = null
 
-    ) {
+    ): RedirectResponse|Response
+    {
         // Redirect user to index page if logged in
         if ($user && $this->isGranted('ROLE_USER')) {
             return $this->redirectToRoute('account_index');
@@ -161,15 +164,17 @@ class AccountController extends FrontendController
             }
         }
 
-        return [
+        return $this->render('account/register.html.twig', [
             'customer' => $customer,
             'form' => $form->createView(),
             'errors' => $errors,
             'hidePassword' => $hidePassword
-        ];
+        ]);
     }
 
     /**
+     * @Template
+     *
      * @Route("/account/send-password-recovery", name="account_password_send_recovery")
      *
      * @param Request $request
@@ -178,7 +183,7 @@ class AccountController extends FrontendController
      *
      * @throws \Exception
      */
-    public function sendPasswordRecoveryMailAction(Request $request, PasswordRecoveryService $service, Translator $translator)
+    public function sendPasswordRecoveryMailAction(Request $request, PasswordRecoveryService $service, Translator $translator): RedirectResponse|array
     {
         if ($request->isMethod(Request::METHOD_POST)) {
 
@@ -194,6 +199,8 @@ class AccountController extends FrontendController
     }
 
     /**
+     * @Template
+     *
      * @Route("/account/reset-password", name="account_reset_password")
      *
      * @param Request $request
@@ -202,7 +209,7 @@ class AccountController extends FrontendController
      *
      * @return array|RedirectResponse
      */
-    public function resetPasswordAction(Request $request, PasswordRecoveryService $service, Translator $translator)
+    public function resetPasswordAction(Request $request, PasswordRecoveryService $service, Translator $translator): RedirectResponse|array
     {
         $token = $request->get('token');
         $customer = $service->getCustomerByToken($token);
@@ -230,9 +237,14 @@ class AccountController extends FrontendController
      * Index page for account
      *
      * @Route("/account/index", name="account_index")
+     * @Security("is_granted('ROLE_USER')")
+     *
      * @param Request $request
+     *
+     * @return Response
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request): Response
     {
+        return $this->render('account/index.html.twig', []);
     }
 }

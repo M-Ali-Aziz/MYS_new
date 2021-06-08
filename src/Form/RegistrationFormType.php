@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Form;
 
+use Pimcore\Model\DataObject\Customer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -21,44 +22,16 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'type_email'
-                ],
-                'required' => true
-            ])
-            ->add('firstname', TextType::class, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'firstname'
-                ],
-                'required' => true
-            ])
-            ->add('lastname', TextType::class, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'lastname'
-                ],
-                'required' => true
-            ]);
+            ->add('email', EmailType::class)
+            ->add('firstname', TextType::class)
+            ->add('lastname', TextType::class);
         if (!$options['hidePassword']) {
-            $builder->add('password', PasswordType::class, [
-                'label' => false,
-                'attr' => [
-                    'placeholder' => 'choose_password'
-                ]
-            ]);
+            $builder->add('password', PasswordType::class);
         }
 
         $builder
             ->add('oAuthKey', HiddenType::class)
-            ->add('_submit', SubmitType::class, [
-                'label' => 'Register',
-                'attr' => [
-                    'class' => 'btn btn-lg btn-block btn-success'
-                ]
-            ]);
+            ->add('_submit', SubmitType::class);;
     }
 
     /**
@@ -67,5 +40,9 @@ class RegistrationFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefined('hidePassword');
+//        $resolver->setDefaults([
+//            'data_class' => customer::class,
+//            'allow_extra_fields' => true,
+//        ]);
     }
 }
