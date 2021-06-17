@@ -8,11 +8,11 @@ security:
         cmf_customer_provider:
             id: cmf.security.user_provider #cmf.security.user_provider.oauth
 
-    encoders:
-        # Our user class and the algorithm we'll use to encode passwords
-        # 'auto' means to let Symfony choose the best possible password hasher (Argon2 or Bcrypt)
-        # https://symfony.com/doc/current/security.html#c-encoding-passwords
-        Pimcore\Model\DataObject\Customer: 'auto'
+#    encoders:
+#        # Our user class and the algorithm we'll use to encode passwords
+#        # 'auto' means to let Symfony choose the best possible password hasher (Argon2 or Bcrypt)
+#        # https://symfony.com/doc/current/security.html#c-encoding-passwords
+#        Pimcore\Model\DataObject\Customer: 'auto'
 
     firewalls:
         dev:
@@ -74,6 +74,7 @@ security:
                 check_path: 'account_login'
                 csrf_token_generator: security.csrf.token_manager
                 default_target_path: 'tools_start'
+#                always_use_default_target_path: true
 
             logout:
                 path: 'account_logout'

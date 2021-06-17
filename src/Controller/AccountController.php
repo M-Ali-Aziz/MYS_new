@@ -31,7 +31,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class AccountController extends FrontendController
 {
     /**
-     * @Template
      *
      * @Route("/account/login", name="account_login")
      *
@@ -40,14 +39,14 @@ class AccountController extends FrontendController
      * @param Request $request
      * @param UserInterface|null $user
      *
-     * @return array|RedirectResponse
+     * @return Response|RedirectResponse
      */
     public function loginAction(
         AuthenticationUtils $authenticationUtils,
         SessionInterface $session,
         Request $request,
         UserInterface $user = null
-    ): RedirectResponse|array
+    ): RedirectResponse|Response
     {
 
         // Redirect user to tools-start page if logged in
@@ -74,10 +73,10 @@ class AccountController extends FrontendController
             $session->set('_security.mys_main.target_path', $request->headers->get('referer'));
         }
 
-        return [
+        return $this->render('account/login.html.twig', [
             'form' => $form->createView(),
             'error' => $error
-        ];
+        ]);
     }
 
     /**
@@ -147,7 +146,7 @@ class AccountController extends FrontendController
                 return $response;
             } catch (DuplicateCustomerException $e) {
                 $errors[] = $translator->trans(
-                    'account.customer-already-exists',
+                    'account.customer_already_exists',
                     [
                         $customer->getEmail(),
                         $urlGenerator->generate('account_password_send_recovery', ['email' => $customer->getEmail()])
@@ -181,21 +180,25 @@ class AccountController extends FrontendController
      * @param PasswordRecoveryService $service
      * @param Translator $translator
      *
+     * @return Response
+     *
      * @throws \Exception
      */
-    public function sendPasswordRecoveryMailAction(Request $request, PasswordRecoveryService $service, Translator $translator): RedirectResponse|array
+    public function sendPasswordRecoveryMailAction(Request $request, PasswordRecoveryService $service, Translator $translator): Response
     {
         if ($request->isMethod(Request::METHOD_POST)) {
-
             $service->sendRecoveryMail($request->get('email', ''), $this->document->getProperty('password_reset_mail'));
-            $this->addFlash('success', $translator->trans('account.reset-mail-sent-when-possible'));
+            $this->addFlash('success', $translator->trans('account.reset_mail_sent_when_possible'));
 
-            return $this->redirectToRoute('account_login', ['no-referer-redirect' => true]);
+            return $this->redirectToRoute('account_login', [
+                'no-referer-redirect' => true,
+                'email' => $request->get('email')
+            ]);
         }
 
-        return [
-            'emailPrefill' => $request->get('email')
-        ];
+        return $this->render('account/send_password_recovery_mail.html.twig', [
+            'email' => $request->get('email')
+        ]);
     }
 
     /**
@@ -207,30 +210,32 @@ class AccountController extends FrontendController
      * @param PasswordRecoveryService $service
      * @param Translator $translator
      *
-     * @return array|RedirectResponse
+     * @return Response|RedirectResponse
      */
-    public function resetPasswordAction(Request $request, PasswordRecoveryService $service, Translator $translator): RedirectResponse|array
+    public function resetPasswordAction(Request $request, PasswordRecoveryService $service, Translator $translator): RedirectResponse|Response
     {
         $token = $request->get('token');
         $customer = $service->getCustomerByToken($token);
+
         if (!$customer) {
-            //TODO render error page
-            throw new NotFoundHttpException('Invalid token');
+            $this->addFlash('danger', $translator->trans('account.password_reset_token_failed'));
+
+            return $this->redirectToRoute('account_login');
         }
 
         if ($request->isMethod(Request::METHOD_POST)) {
             $newPassword = $request->get('password');
             $service->setPassword($token, $newPassword);
 
-            $this->addFlash('success', $translator->trans('account.password-reset-successful'));
+            $this->addFlash('success', $translator->trans('account.password_reset_successful'));
 
             return $this->redirectToRoute('account_login', ['no-referer-redirect' => true]);
         }
 
-        return [
+        return $this->render('account/reset_password.html.twig', [
             'token' => $token,
             'email' => $customer->getEmail()
-        ];
+        ]);
     }
 
     /**
@@ -245,6 +250,6 @@ class AccountController extends FrontendController
      */
     public function indexAction(Request $request): Response
     {
-        return $this->render('account/index.html.twig', []);
+        return $this->render('account/index.html.twig');
     }
 }

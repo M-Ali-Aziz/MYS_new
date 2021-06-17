@@ -44,6 +44,10 @@ pimcore:
         encoder_factories:
             Pimcore\Model\DataObject\Customer: cmf.security.user_password_encoder_factory
 
+    models:
+        class_overrides:
+            Pimcore\Model\DataObject\Customer: App\Model\Customer
+
 pimcore_customer_management_framework:
     # Enable/Disable SSO oauth client. If enabled additional steps are necessary, see SSO docs for details.
     oauth_client:

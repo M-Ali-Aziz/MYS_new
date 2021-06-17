@@ -48,7 +48,7 @@ class PasswordRecoveryService
 
         if ($customer instanceof PasswordRecoveryInterface) {
 
-            // Generate token
+            //generate token
             $token = md5($customer->getId() . time() . uniqid());
             $customer->setPasswordRecoveryToken($token);
             $customer->setPasswordRecoveryTokenDate(Carbon::now());
@@ -59,11 +59,13 @@ class PasswordRecoveryService
             $mail->setDocument($emailDocument);
             $mail->setParams([
                 'customer' => $customer,
+                'customerFirstname' => $customer->getFirstname(),
                 'customerId' => $customer->getId(),
                 'token' => $token,
                 'tokenLink' => $this->urlGenerator->generate('account_reset_password', ['token' => $token]),
             ]);
-            $mail->setTo($customer->getEmail());
+            $mail->addTo($customer->getEmail());
+
             $mail->send();
 
             return $customer;

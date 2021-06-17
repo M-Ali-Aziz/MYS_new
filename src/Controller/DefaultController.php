@@ -18,4 +18,14 @@ class DefaultController extends FrontendController
     {
         return [];
     }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function genericMailAction(Request $request)
+    {
+        return $this->render('default/generic_mail.html.twig');
+    }
 }

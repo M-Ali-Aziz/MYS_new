@@ -23,6 +23,8 @@ Fields Summary:
 - calculatedSegments [advancedManyToManyObjectRelation]
 - password [password]
 - ssoIdentities [manyToManyObjectRelation]
+- passwordRecoveryToken [input]
+- passwordRecoveryTokenDate [datetime]
 - idEncoded [input]
 */ 
 
@@ -32,7 +34,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Customer',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1623313665,
+   'modificationDate' => 1623672103,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '\\CustomerManagementFrameworkBundle\\Model\\AbstractCustomer\\DefaultAbstractUserawareCustomer',
@@ -783,6 +785,60 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                      'blockedVarsForExport' => 
                     array (
                     ),
+                  )),
+                  2 => 
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Input::__set_state(array(
+                     'fieldtype' => 'input',
+                     'width' => '',
+                     'defaultValue' => NULL,
+                     'columnLength' => 190,
+                     'regex' => '',
+                     'unique' => false,
+                     'showCharCount' => false,
+                     'name' => 'passwordRecoveryToken',
+                     'title' => 'password Recovery Token',
+                     'tooltip' => '',
+                     'mandatory' => false,
+                     'noteditable' => true,
+                     'index' => false,
+                     'locked' => NULL,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'datatype' => 'data',
+                     'relationType' => false,
+                     'invisible' => true,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'defaultValueGenerator' => '',
+                  )),
+                  3 => 
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Datetime::__set_state(array(
+                     'fieldtype' => 'datetime',
+                     'queryColumnType' => 'bigint(20)',
+                     'columnType' => 'bigint(20)',
+                     'defaultValue' => NULL,
+                     'useCurrentDate' => false,
+                     'name' => 'passwordRecoveryTokenDate',
+                     'title' => 'password Recovery Token Date',
+                     'tooltip' => '',
+                     'mandatory' => false,
+                     'noteditable' => true,
+                     'index' => false,
+                     'locked' => NULL,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'datatype' => 'data',
+                     'relationType' => false,
+                     'invisible' => true,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                     'defaultValueGenerator' => '',
                   )),
                 ),
                  'locked' => false,

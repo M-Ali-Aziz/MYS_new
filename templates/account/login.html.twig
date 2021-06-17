@@ -1,38 +1,57 @@
 {% extends 'layouts/layout.html.twig' %}
-{% form_theme form 'bootstrap_4_layout.html.twig' %}
 
 {% block main %}
-    <div class="container-fluid container-lg border rounded pt-5 px-5">
-        <div class="d-flex justify-content-center">
-            <div class="col-12 col-md-6">
-                <h2 class="">{{ 'login' | trans }}</h2>
-                <p>{{ 'dont_have_an_account_?' | trans }} <a href="{{ path('account_register')}}">{{ 'join_for_free' | trans }}</a></p>
+<div class="d-flex justify-content-center text-center">
+    <div class="col-12 col-md-6">
+        <h2 class="">{{ 'login'|trans }}</h2>
+        <p>{{ 'dont_have_an_account_?'|trans }} <a href="{{ path('account_register')}}">{{ 'join_for_free'|trans }}</a></p>
 
-                {% if error %}
-                    <div class="alert alert-danger">
-                        {{ error.getMessage() }}
-                    </div>
-                {% endif %}
-
-                {{ form_start(form) }}
-                    {{ form_widget(form._username) }}
-                    {{ form_widget(form._password) }}
-
-                    <input type="hidden" name="_csrf_token"
-                           value="{{ csrf_token('authenticate') }}"
-                    >
-
-                    <div class="custom-control custom-checkbox mb-3">
-                        <input name="_remember_me" type="checkbox" class="custom-control-input" id="remember_me" checked>
-                        <label class="custom-control-label" for="remember_me">{{ 'remember_me' | trans }}</label>
-                    </div>
-
-                    <p><a href="{{ path('account_password_send_recovery') }}">{{ 'forgot_your_password_?' | trans }}</a></p>
-
-                    {{ form_row(form._submit, {'attr': {'class': 'btn-success btn-lg btn-block mt-4'}}) }}
-
-                {{ form_end(form) }}
+        {% if error %}
+            <div class="alert alert-danger">
+                {{ error.getMessage() }}
             </div>
-        </div>
+        {% endif %}
+
+        {{ form_start(form, {'attr': {'class': 'px-3 p-md-0 mt-4'}}) }}
+            {{ form_row(form._username, {
+                label: false,
+                attr: {
+                    'placeholder': 'type_email'|trans,
+                    'class': 'form-control w-100 border-0 border-bottom mb-3 pb-2'
+                },
+            }) }}
+            {{ form_row(form._password, {
+                label: false,
+                attr: {
+                    'placeholder': 'password'|trans,
+                    'class': 'form-control w-100 border-0 border-bottom pb-2'
+                },
+            }) }}
+
+            <input type="hidden" name="_csrf_token"
+                   value="{{ csrf_token('authenticate') }}"
+            >
+
+            <div class="text-end mb-2">
+                <a class="text-dark" href="{{ path('account_password_send_recovery') }}">{{ 'forgot_your_password_?'|trans }}</a>
+            </div>
+
+            <div class="custom-control custom-checkbox text-start">
+                <input name="_remember_me" type="checkbox" class="custom-control-input" id="remember_me" checked>
+                <label class="custom-control-label" for="remember_me">{{ 'remember_me'|trans }}</label>
+            </div>
+
+
+            <div class="mt-4">
+                {{ form_row(form._submit, {
+                    'label': 'login'|trans,
+                    attr: {
+                        'class': 'btn py-2 px-5 border rounded-pill'
+                    },
+                }) }}
+            </div>
+
+        {{ form_end(form) }}
     </div>
+</div>
 {% endblock %}

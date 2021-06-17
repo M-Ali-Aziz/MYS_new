@@ -8,43 +8,43 @@ use CustomerManagementFrameworkBundle\Model\CustomerInterface;
 interface PasswordRecoveryInterface
 {
     /**
-     * @param string $token
+     * @param string|null $token
      *
      * @return CustomerInterface
      */
-    public function setPasswordRecoveryToken(string $token): CustomerInterface;
+    public function setPasswordRecoveryToken(?string $token);
 
     /**
      * @return string
      */
-    public function getPasswordRecoveryToken(): string;
+    public function getPasswordRecoveryToken(): ?string;
 
     /**
-     * @param Carbon $tokenDate
+     * @param Carbon|null $tokenDate
      *
      * @return CustomerInterface
      */
-    public function setPasswordRecoveryTokenDate(Carbon $tokenDate): CustomerInterface;
+    public function setPasswordRecoveryTokenDate(?Carbon $tokenDate);
 
     /**
-     * @return Carbon
+     * @return Carbon|null
      */
-    public function getPasswordRecoveryTokenDate(): Carbon;
+    public function getPasswordRecoveryTokenDate(): ?Carbon;
 
     /**
      * @return CustomerInterface
      */
-    public function save(): CustomerInterface;
+    public function save();
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getEmail(): string;
+    public function getEmail(): ?string;
 
     /**
-     * @param string $password
+     * @param string|null $password
      *
      * @return CustomerInterface
      */
-    public function setPassword(string $password): CustomerInterface;
+    public function setPassword(?string $password);
 }
