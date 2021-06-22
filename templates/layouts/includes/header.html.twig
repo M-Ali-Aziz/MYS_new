@@ -28,7 +28,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarContent">
-        <div class="d-flex justify-content-center py-5">
+        <div class="d-flex justify-content-center py-4">
             <ul class="navbar-nav flex-column text-center">
                 {# Logo Image #}
                 <li class="nav-item mb-4 mt-5 d-none d-lg-block">
@@ -39,10 +39,10 @@
                 </li>
 
                 {# Links #}
-                <div class="mt-4">
+                <div>
                     {% for link in mainNavigation | filter(link => link.visible == true) %}
-                        <li class="nav-item ps-4">
-                            <a class="nav-link text-dark {% if link.active %}fw-bold active{% endif %}"
+                        <li class="nav-item px-4">
+                            <a class="nav-link text-dark {% if link.active %}fw-bold border-bottom border-dark border-3 pb-0 active{% endif %}"
                                href="{{ link.uri }}">{{ link.label }}</a>
                         </li>
                     {% endfor %}
@@ -59,8 +59,8 @@
                 {% else %}
 
                     {# Login & Signup Links #}
-                    <li class="nav-item mt-4">
-                        <a class="nav-link text-dark {{ app.request.get('_route') == 'account_login' ? 'fw-bold active' }}"
+                    <li class="nav-item mt-4 px-4">
+                        <a class="nav-link text-dark {{ app.request.get('_route') == 'account_login' ? 'fw-bold border-bottom border-dark border-3 pb-0 mb-2 active' }}"
                            href="{{ path('account_login') }}">{{ 'login'|trans }}</a>
                     </li>
                     <li class="nav-item btn-primary rounded-pill px-4">
