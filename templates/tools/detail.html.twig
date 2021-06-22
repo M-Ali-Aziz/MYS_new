@@ -1,0 +1,160 @@
+{% extends 'layouts/layout.html.twig' %}
+
+{% block main %}
+{# Background color + image#}
+<div class="d-md-none position-relative top-0 start-50 translate-middle min-vw-100" style="height: 169px;{% if tool.backgroundColor.hex is defined %}background-color: {{ tool.backgroundColor.hex }};{% endif %}">
+    {% if tool.image %}
+        <div class="position-absolute top-100 start-50 translate-middle">
+            <img class="rounded-3" width="253" height="210" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
+        </div>
+    {% endif %}
+</div>
+<div class="d-none d-md-block rounded-3 position-relative" style="height: 229px;{% if tool.backgroundColor.hex is defined %}background-color: {{ tool.backgroundColor.hex }};{% endif %}">
+    {% if tool.image %}
+        <div class="position-absolute top-50 start-50 translate-middle mt-4">
+            <img class="rounded-3" width="336" height="238" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
+        </div>
+    {% endif %}
+</div>
+
+{# Title + Description #}
+<h2 class="text-center mt-5">{{ tool.title }}</h2>
+<p class="text-center">{{ tool.description }}</p>
+{#<h2 class="text-center mt-5">{{ tool.title }}</h2>
+<div class="d-flex justify-content-center">
+    <p class="text-center w-75">{{ tool.aboutTool }}</p>
+</div>#}
+
+{# Carousel/Slideshow #}
+{% if tool.screenshots %}
+    <div class="ms-4" style="width: 100%; overflow-x:auto">
+        <div style="width: 700px">
+            <div class="row gx-4">
+
+                {% for img in tool.screenshots %}
+                    <div class="col">
+                        <img src="{{ img.screenshot.data }}" height="393" class="w-100 rounded-3" alt="{{ img.screenshot.data.filename }}">
+                    </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+{#
+{% if tool.screenshots %}
+    <div class="d-flex justify-content-center">
+        <div id="toolsDetailCarousel" class="carousel slide mt-5 w-75" data-bs-interval="false">
+            <div class="carousel-inner">
+
+                {% for img in tool.screenshots %}
+                    <div class="carousel-item {% if loop.first %} active{% endif %}">
+                        <img src="{{ img.screenshot.data }}" height="393" class="d-block w-100 rounded-3" alt="{{ img.screenshot.data.filename }}">
+                        {% if img.localizedfields.data.InternalData[app.request.locale] is defined %}
+                            <div class="carousel-caption d-none d-md-block">
+                                <p>{{ img.localizedfields.data.InternalData[app.request.locale].screenshotDescription }}</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#toolsDetailCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#toolsDetailCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+
+    #}{# TODO #}{#
+    #}{# <div class="d-flex justify-content-center mt-3">
+        <h3 class="text-center w-50">{{ 'tool.screenshotDescription' }}</h3>
+    </div> #}{#
+{% endif %}
+#}
+
+{# Video #}
+{% if tool.embedLoom %}
+    <h2 class="text-center mt-5">{{ 'how_does_it_work_?' | trans }}</h2>
+    <div class="ratio ratio-16x9 mt-4">
+        {{ tool.embedLoom | raw }}
+    </div>
+{% elseif tool.video %}
+    <h2 class="text-center mt-5">{{ 'how_does_it_work_?' | trans }}</h2>
+    <div class="ratio ratio-16x9 mt-4">
+        {% if tool.video.type == 'asset' %}
+            <video poster="{{ tool.video.poster }}" title="{{ tool.video.title }}" controls="controls" class="rounded-3">
+                <source type="video/mp4" src="{{ tool.video.data }}">
+            </video>
+        {% else %}
+            <iframe
+                src="{{ video_base_url[tool.video.type] ~ tool.video.data }}"
+                title="{{ tool.video.title }}"
+                class="rounded-3"
+                frameborder="0">
+            </iframe>
+        {% endif %}
+    </div>
+{% endif %}
+
+{# About this tool #}
+{% if tool.aboutTool %}
+    <h3 class="mt-5">{{ 'description'|trans }}</h3>
+    <p class="">{{ tool.aboutTool }}</p>
+{% endif %}
+
+
+{# Sticky box #}
+<div class="fixed-bottom sticky-top bg-body mt-3 p-3 g-0 rounded-3 shadow" style="bottom: 20px;">
+    <div>
+        {% if tool.image %}
+            <img class="float-start rounded-3 me-3" width="65" height="45" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
+        {% endif %}
+        <h4>{{ tool.title }}</h4>
+        {% if tool.creator %}
+            <p class="m-0">{{ 'by' | trans }} {{ tool.creator.name }}</p>
+        {% endif %}
+    </div>
+    <div class="row mt-2">
+        <div class="col-2">
+            <h4 class="mt-2">{{ 'free' | trans }}</h4>
+        </div>
+        <div class="col-10">
+            <a role="button" class="btn btn-outline-primary rounded-pill float-end" href="#" aria-label="{{ 'try_tool' | trans }}">
+                <h3 class="m-0 p-1 link-primary">
+                    <span class="me-2">{{ 'try_tool' | trans }}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                    </svg>
+                </h3>
+            </a>
+        </div>
+    </div>
+</div>
+{#<div class="d-none row fixed-bottom sticky-top bg-light mt-3 p-2 g-0 rounded-3">
+        <div class="col">
+            {% if tool.image %}
+                <img class="float-start rounded-3 me-3" width="108" height="78" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
+            {% endif %}
+            <h2>{{ tool.title }}</h2>
+            {% if tool.creator %}
+                {% if tool.creator.image %}
+                    <img class="float-start rounded-circle me-1" width="25" height="25" src="{{ tool.creator.image }}" alt="{{ tool.creator.image }}">
+                {% endif %}
+                <h4 class="m-0">{{ 'by' | trans }} {{ tool.creator.name }}</h4>
+            {% endif %}
+        </div>
+    <div class="col-3">
+        <h4 class="float-start mt-3">{{ 'free' | trans }}</h4>
+        <div class="d-flex justify-content-end">
+            <a role="button" class="btn btn-outline-primary mt-2 rounded-pill" href="#" aria-label="{{ 'try_tool' | trans }}">
+                <h3 class="m-0 text-dark">{{ 'try_tool' | trans }}<i class="bi bi-arrow-right align-middle ms-3" role="img" aria-label="{{ 'try_tool' | trans }}"></i>
+                </h3>
+            </a>
+        </div>
+    </div>
+</div>#}
+{% endblock %}
