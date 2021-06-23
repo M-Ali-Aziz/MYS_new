@@ -21,6 +21,16 @@ class ToolsController extends FrontendController
     }
 
     /**
+     * Set video embed base url
+     * @var array
+     */
+    protected array $videoBaseUrl = [
+        'youtube' => 'https://www.youtube.com/embed/',
+        'vimeo' => 'https://player.vimeo.com/video/',
+        'dailymotion' => 'https://www.dailymotion.com/embed/video/'
+    ];
+
+    /**
      * @Route("/tools/{tool}", name="tools_detail",  requirements={"tool"="\d+"})
      * @param Request $request
      * @param Tools $tool
@@ -31,16 +41,9 @@ class ToolsController extends FrontendController
         // Set document parent id for dynamic page
         $docParentId = $request->get('contentDocument')->getParentId();
 
-        // Set video embed base url
-        $videoBaseUrl = [
-            'youtube' => 'https://www.youtube.com/embed/',
-            'vimeo' => 'https://player.vimeo.com/video/',
-            'dailymotion' => 'https://www.dailymotion.com/embed/video/'
-        ];
-
         return $this->render('tools/detail.html.twig', [
             'tool' => $tool,
-            'video_base_url' => $videoBaseUrl,
+            'video_base_url' => $this->videoBaseUrl,
             'doc_parent_id' => $docParentId,
             // TODO: send page title for dynamic page
         ]);
@@ -56,6 +59,7 @@ class ToolsController extends FrontendController
     {
         return $this->render('tools/preview.html.twig', [
             'tool' => $tool,
+            'video_base_url' => $this->videoBaseUrl,
         ]);
     }
 }

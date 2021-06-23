@@ -1,0 +1,49 @@
+{# Bootstrap css #}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+<div class="mt-3 ms-3">
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#toolCard" aria-expanded="false" aria-controls="toolCard">
+        Show Tools Card
+    </button>
+
+    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#toolDetail" aria-expanded="false" aria-controls="toolDetail">
+        Show Tools Detail page
+    </button>
+</div>
+
+{# Tools Card#}
+<div class="collapse" id="toolCard">
+    <div class="card card-body">
+        <div class="ms-3">
+            <div class="col-12 col-md-3 mt-4">
+                <a href="#" class="card text-decoration-none text-dark border-0">
+                    {% if tool.image %}
+                        <img class="card-img-top rounded" height="200" src="{{ tool.image }}"
+                             alt="{{ tool.image.filename }}">
+                    {% elseif (tool.backgroundColor) %}
+                        <img height="200" class="rounded" style="background: {{ tool.backgroundColor.hex }}" src=""
+                             alt="tool image">
+                    {% else %}
+                        <img height="200" class="rounded bg-primary" src="" alt="tool image">
+                    {% endif %}
+                    <p class="badge bg-light text-dark mt-2 ms-2 p-2 position-absolute">{{ tool.category | trans }}</p>
+                    <div class="card-body p-0 pt-3">
+                        <h4 class="card-title m-0">{{ tool.title }}</h4>
+                        {% if tool.creator %}
+                            <p class="fw-bold"><small
+                                    class="text-muted">{{ 'by' | trans }} {{ tool.creator.name }}</small></p>
+                        {% endif %}
+                        <p class="card-text">{{ tool.description }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{# Tools detail#}
+<div class="collapse" id="toolDetail">
+    <div class="card card-body">
+        {% include 'tools/detail.html.twig' %}
+    </div>
+</div>

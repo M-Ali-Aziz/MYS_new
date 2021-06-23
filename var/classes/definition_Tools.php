@@ -35,7 +35,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Tools',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1622448913,
+   'modificationDate' => 1624367237,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -1030,7 +1030,7 @@ from Creator DataObject',
    'previewUrl' => '',
    'group' => 'Tools',
    'showAppLoggerTab' => false,
-   'linkGeneratorReference' => '@AppBundle\\Website\\LinkGenerator\\ToolsLinkGenerator',
+   'linkGeneratorReference' => '@App\\Website\\LinkGenerator\\ToolsLinkGenerator',
    'previewGeneratorReference' => '',
    'compositeIndices' => 
   array (

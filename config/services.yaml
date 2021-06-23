@@ -62,6 +62,12 @@ services:
     App\Form\RegistrationFormType: ~
     App\Form\RegistrationFormHandler: ~
 
+    # ---------------------------------------------------------
+    # Link Generators for DataObjects
+    # ---------------------------------------------------------
+    App\Website\LinkGenerator\ToolsLinkGenerator:
+        public: true
+
 
     # ---------------------------------------------------------
     # Misc Services
