@@ -5,22 +5,22 @@
             <a href="{{ path('tools_detail', {tool: tool.id}) }}"
                class="card text-decoration-none link-dark bg-light border-0 rounded-3 h-100 p-3">
                 {% if tool.image %}
-                    <img class="card-img-top rounded" height="200" src="{{ tool.image }}"
+                    <img class="card-img-top rounded-3" height="200" src="{{ tool.image }}"
                          alt="{{ tool.image.filename }}">
                 {% elseif (tool.backgroundColor) %}
-                    <img height="200" class="rounded" style="background: {{ tool.backgroundColor.hex }}" src=""
+                    <img height="200" class="rounded-3" style="background: {{ tool.backgroundColor.hex }}" src=""
                          alt="tool image">
                 {% else %}
-                    <img height="200" class="rounded bg-primary" src="" alt="tool image">
+                    <img height="200" class="rounded-3 bg-primary" src="" alt="tool image">
                 {% endif %}
-                <p class="badge bg-light text-dark mt-2 ms-2 p-2 position-absolute">{{ tool.category | trans }}</p>
+                <p class="badge bg-light text-dark mt-2 ms-2 p-2 position-absolute mys__description-font">{{ tool.category | trans }}</p>
                 <div class="card-body p-0 pt-3">
-                    <h4 class="card-title m-0">{{ tool.title }}</h4>
+                    <h4 class="card-title">{{ tool.title }}</h4>
                     {% if tool.creator %}
-                        <p class="fw-bold"><small
+                        <p class="mys__description-bold-font"><small
                                 class="text-muted">{{ 'by' | trans }} {{ tool.creator.name }}</small></p>
                     {% endif %}
-                    <p class="card-text">{{ tool.description }}</p>
+                    <p class="card-text mys__description-font">{{ tool.description }}</p>
                 </div>
             </a>
         </div>

@@ -4,9 +4,9 @@
     {% endif %}
     {% for i in pimcore_iterate_block(pimcore_block('mainlinkblock')) %}
         <div class="col-12 col-lg-2 mb-3 mb-lg-0">
-            <p class="fw-bold m-0">{{ pimcore_input('mainBlockTitle', {'placeholder': 'Footer Title'}) }}</p>
+            <p class="mys__description-bold-font">{{ pimcore_input('mainBlockTitle', {'placeholder': 'Footer Title'}) }}</p>
             {% for i in pimcore_iterate_block(pimcore_block('linkblock')) %}
-                <p class="m-0">{{ pimcore_link('mainBlockLink', {'class': "text-decoration-none link-dark"}) }}</p>
+                <p class="mys__description-font">{{ pimcore_link('mainBlockLink', {'class': "text-decoration-none link-dark"}) }}</p>
             {% endfor %}
         </div>
         {% if editmode %}
@@ -18,4 +18,4 @@
 {% if editmode %}
     <h3 class="float-start">{{ 'Footer Text:' }}</h3>
 {% endif %}
-<p class="text-center mt-4 fw-bold">{{ pimcore_input('madeTitle', {'placeholder': 'Made with LOVE in Sweden'}) }}</p>
+<p class="text-center mt-4 mys__description-bold-font">{{ pimcore_input('madeTitle', {'placeholder': 'Made with LOVE in Sweden'}) }}</p>
