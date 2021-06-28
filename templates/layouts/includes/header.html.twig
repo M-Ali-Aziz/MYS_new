@@ -51,8 +51,8 @@
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
 
                     {# Signout link #}
-                    <li class="nav-item btn-primary rounded-pill px-4">
-                        <a class="nav-link text-light"
+                    <li class="nav-item mt-4 px-4">
+                        <a class="nav-link text-dark"
                            href="{{ path('account_logout') }}">{{ 'signout'|trans }}</a>
                     </li>
 
