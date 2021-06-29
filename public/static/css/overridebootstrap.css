@@ -1,0 +1,17 @@
+#override .btn-primary {
+    background-color: #283872;
+    border-color: #283872;
+}
+
+#override .bg-light {
+    background-color: #F6F6F6 !important;
+}
+
+#override .rounded-3 {
+    border-radius: 15px !important;
+}
+
+#override .btn-outline-primary {
+    color: #283872;
+    border-color: #283872;
+}

@@ -1,0 +1,71 @@
+body {
+    font-family: 'DM Sans', sans-serif;
+}
+
+#override h1 {
+    font-size: 29px;
+    font-weight: 500;
+    line-height: 35px;
+}
+
+#override h2 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 31px;
+}
+
+#override h3 {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 32px;
+}
+
+#override h4 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+}
+
+#override p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+#override .mys__text-body-font {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+#override .mys__description-bold-font {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+}
+
+#override .mys__description-font {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.mys__arrow-right-after::after {
+    content: url('../images/icons/arrow-right.svg');
+    position: absolute;
+    margin: 3px 0 0 13px;
+}
+
+.mys__not-focusable:focus {
+    box-shadow: none;
+}
+
+.mys__border-violet {
+    border-color: #E9EAFF !important;
+}
+
+.mys__border-violet:focus {
+    border-color: #484DBD !important;
+    box-shadow: none;
+}
+
