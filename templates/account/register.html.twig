@@ -44,7 +44,7 @@
                 label: false,
                 attr: {
                     'placeholder': 'type_email'|trans,
-                    'class': 'form-control w-100 border-0 border-bottom mb-3 pb-2'
+                    'class': 'form-control w-100 border-0 rounded-0 border-bottom mys__border-violet mb-3 pb-2'
                 },
             }) }}
 
@@ -52,7 +52,7 @@
                 label: false,
                 attr: {
                     'placeholder': 'name'|trans,
-                    'class': 'form-control w-100 border-0 border-bottom mb-3 pb-2'
+                    'class': 'form-control w-100 border-0 rounded-0 border-bottom mys__border-violet mb-3 pb-2'
                 },
             }) }}
 
@@ -60,7 +60,7 @@
                 label: false,
                 attr: {
                     'placeholder': 'lastname'|trans,
-                    'class': 'form-control w-100 border-0 border-bottom mb-3 pb-2'
+                    'class': 'form-control w-100 border-0 rounded-0 border-bottom mys__border-violet mb-3 pb-2'
                 },
             }) }}
 
@@ -69,7 +69,7 @@
                     label: false,
                     attr: {
                         'placeholder': 'choose_password'|trans,
-                        'class': 'form-control w-100 border-0 border-bottom mb-3 pb-2'
+                        'class': 'form-control w-100 border-0 rounded-0 border-bottom mys__border-violet mb-3 pb-2'
                     },
                 }) }}
             {% endif %}
@@ -78,14 +78,14 @@
                 {{ form_row(form._submit, {
                     'label': 'join'|trans,
                     attr: {
-                        'class': 'btn py-2 px-5 border rounded-pill'
+                        'class': 'btn py-2 ps-4 pe-5 border rounded-pill mys__arrow-right-after'
                     },
                 }) }}
             </div>
 
         {{ form_end(form) }}
 
-        <p class="mt-5">
+        <p class="mt-5 mys__description-font">
             {{ 'by_joining_,_you_agree_to_the'|trans }}
             <a href="#">{{ 'terms'|trans }}</a>
             {{ 'and'|trans }}

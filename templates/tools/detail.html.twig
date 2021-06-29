@@ -103,7 +103,7 @@
 {# About this tool #}
 {% if tool.aboutTool %}
     <h3 class="mt-5">{{ 'description'|trans }}</h3>
-    <p class="">{{ tool.aboutTool }}</p>
+    <p>{{ tool.aboutTool }}</p>
 {% endif %}
 
 
@@ -113,20 +113,20 @@
         {% if tool.image %}
             <img class="float-start rounded-3 me-3" width="65" height="45" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
         {% endif %}
-        <h4>{{ tool.title }}</h4>
+        <h4 class="m-0">{{ tool.title }}</h4>
         {% if tool.creator %}
-            <p class="m-0">{{ 'by' | trans }} {{ tool.creator.name }}</p>
+            <p class="m-0 mys__description-font">{{ 'by' | trans }} {{ tool.creator.name }}</p>
         {% endif %}
     </div>
-    <div class="row mt-2">
-        <div class="col-2">
-            <h4 class="mt-2">{{ 'free' | trans }}</h4>
+    <div class="row mt-3 align-items-center h-100">
+        <div class="col-3">
+            <h4 class="ps-3 m-0">{{ 'free' | trans }}</h4>
         </div>
-        <div class="col-10">
+        <div class="col-9">
             <a role="button" class="btn btn-outline-primary rounded-pill float-end" href="#" aria-label="{{ 'try_tool' | trans }}">
-                <h3 class="m-0 p-1 link-primary">
-                    <span class="me-2">{{ 'try_tool' | trans }}</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                <h3 class="m-0">
+                    {{ 'try_tool' | trans }}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right ms-2" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                     </svg>
                 </h3>

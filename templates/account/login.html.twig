@@ -17,14 +17,14 @@
                 label: false,
                 attr: {
                     'placeholder': 'type_email'|trans,
-                    'class': 'form-control w-100 border-0 border-bottom mb-3 pb-2'
+                    'class': 'form-control w-100 border-0 rounded-0 border-bottom mys__border-violet mb-3 pb-2'
                 },
             }) }}
             {{ form_row(form._password, {
                 label: false,
                 attr: {
                     'placeholder': 'password'|trans,
-                    'class': 'form-control w-100 border-0 border-bottom pb-2'
+                    'class': 'form-control w-100 border-0 rounded-0 border-bottom mys__border-violet pb-2'
                 },
             }) }}
 
@@ -33,7 +33,7 @@
             >
 
             <div class="text-end mb-2">
-                <a class="text-dark" href="{{ path('account_password_send_recovery') }}">{{ 'forgot_your_password_?'|trans }}</a>
+                <a class="text-dark mys__description-bold-font" href="{{ path('account_password_send_recovery') }}">{{ 'forgot_your_password_?'|trans }}</a>
             </div>
 
             <div class="custom-control custom-checkbox text-start">
@@ -46,7 +46,7 @@
                 {{ form_row(form._submit, {
                     'label': 'login'|trans,
                     attr: {
-                        'class': 'btn py-2 px-5 border rounded-pill'
+                        'class': 'btn py-2 ps-4 pe-5 border rounded-pill mys__arrow-right-after'
                     },
                 }) }}
             </div>
