@@ -1,5 +1,6 @@
 {# Tools Card #}
 {% if tools %}
+<div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 gx-4 gb-4">
     {% for tool in tools %}
         <div class="col mb-4">
             <a href="{{ path('tools_detail', {tool: tool.id}) }}"
@@ -25,6 +26,7 @@
             </a>
         </div>
     {% endfor %}
+</div>
 {% else %}
     <h5>{{ 'no_tools_card_msg' | trans }}</h5>
 {% endif %}

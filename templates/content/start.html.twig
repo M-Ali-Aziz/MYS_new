@@ -20,13 +20,11 @@
     {# Tools #}
     <div class="mt-3">
         <h3 class="ps-2">{{ pimcore_input('toolsTitle', {'placeholder': 'Tools title'}) }}</h3>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 gx-5 gb-5">
-            {{ pimcore_areablock("startPageAreablock", {
-                "allowed": ["tool-cards"],
-                "limits": {
-                    "tool-cards": 1
-                },
-            }) }}
-        </div>
+        {{ pimcore_areablock("startPageAreablock", {
+            "allowed": ["tool-cards"],
+            "limits": {
+                "tool-cards": 1
+            },
+        }) }}
     </div>
 {% endblock %}
