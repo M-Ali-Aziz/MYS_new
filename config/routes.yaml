@@ -7,7 +7,7 @@ app_localized:
     type:     annotation
     prefix:
         en: /en
-        de: /de
+        sv: /sv
 
 app:
     resource: "../src/Controller/"
