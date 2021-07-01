@@ -7,7 +7,7 @@
         <p>{{ 'dont_have_an_account_?'|trans }} <a href="{{ path('account_register')}}">{{ 'join_for_free'|trans }}</a></p>
 
         {% if error %}
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" role="alert">
                 {{ error.getMessage() }}
             </div>
         {% endif %}
