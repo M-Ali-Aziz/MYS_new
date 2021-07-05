@@ -12,6 +12,8 @@ Fields Summary:
 -- aboutTool [textarea]
 - image [image]
 - backgroundColor [rgbaColor]
+- screenshotsMobile [block]
+-- screenshotMobile [image]
 - screenshots [block]
 -- screenshot [image]
 -- localizedfields [localizedfields]
@@ -35,7 +37,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Tools',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1624367237,
+   'modificationDate' => 1625483184,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -354,6 +356,90 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
               1 => 
               Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'fieldtype' => 'fieldset',
+                 'name' => 'Screenshots Mobile',
+                 'type' => NULL,
+                 'region' => NULL,
+                 'title' => 'Screenshots Mobile',
+                 'width' => '',
+                 'height' => '',
+                 'collapsible' => false,
+                 'collapsed' => false,
+                 'bodyStyle' => '',
+                 'datatype' => 'layout',
+                 'permissions' => NULL,
+                 'childs' => 
+                array (
+                  0 => 
+                  Pimcore\Model\DataObject\ClassDefinition\Data\Block::__set_state(array(
+                     'fieldtype' => 'block',
+                     'lazyLoading' => false,
+                     'disallowAddRemove' => false,
+                     'disallowReorder' => false,
+                     'collapsible' => false,
+                     'collapsed' => false,
+                     'maxItems' => NULL,
+                     'styleElement' => '',
+                     'childs' => 
+                    array (
+                      0 => 
+                      Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
+                         'fieldtype' => 'image',
+                         'name' => 'screenshotMobile',
+                         'title' => 'Screenshot Mobile',
+                         'tooltip' => '',
+                         'mandatory' => false,
+                         'noteditable' => false,
+                         'index' => false,
+                         'locked' => false,
+                         'style' => '',
+                         'permissions' => NULL,
+                         'datatype' => 'data',
+                         'relationType' => false,
+                         'invisible' => false,
+                         'visibleGridView' => false,
+                         'visibleSearch' => false,
+                         'blockedVarsForExport' => 
+                        array (
+                        ),
+                         'width' => 655,
+                         'height' => 393,
+                         'uploadPath' => '',
+                      )),
+                    ),
+                     'layout' => NULL,
+                     'referencedFields' => 
+                    array (
+                    ),
+                     'fieldDefinitionsCache' => NULL,
+                     'name' => 'screenshotsMobile',
+                     'title' => 'Screenshots Mobile',
+                     'tooltip' => '',
+                     'mandatory' => false,
+                     'noteditable' => false,
+                     'index' => false,
+                     'locked' => false,
+                     'style' => '',
+                     'permissions' => NULL,
+                     'datatype' => 'data',
+                     'relationType' => false,
+                     'invisible' => false,
+                     'visibleGridView' => false,
+                     'visibleSearch' => false,
+                     'blockedVarsForExport' => 
+                    array (
+                    ),
+                  )),
+                ),
+                 'locked' => false,
+                 'blockedVarsForExport' => 
+                array (
+                ),
+                 'labelWidth' => 100,
+                 'labelAlign' => 'left',
+              )),
+              2 => 
+              Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
+                 'fieldtype' => 'fieldset',
                  'name' => 'Screenshots',
                  'type' => NULL,
                  'region' => NULL,
@@ -504,7 +590,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                  'labelWidth' => 100,
                  'labelAlign' => 'left',
               )),
-              2 => 
+              3 => 
               Pimcore\Model\DataObject\ClassDefinition\Layout\Fieldset::__set_state(array(
                  'fieldtype' => 'fieldset',
                  'name' => 'Embed video',
