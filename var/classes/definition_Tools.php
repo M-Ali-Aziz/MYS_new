@@ -13,7 +13,7 @@ Fields Summary:
 - image [image]
 - backgroundColor [rgbaColor]
 - screenshotsMobile [block]
--- screenshotMobile [image]
+-- screenshot [image]
 - screenshots [block]
 -- screenshot [image]
 -- localizedfields [localizedfields]
@@ -37,7 +37,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Tools',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1625483184,
+   'modificationDate' => 1625568564,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -384,8 +384,8 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                       0 => 
                       Pimcore\Model\DataObject\ClassDefinition\Data\Image::__set_state(array(
                          'fieldtype' => 'image',
-                         'name' => 'screenshotMobile',
-                         'title' => 'Screenshot Mobile',
+                         'name' => 'screenshot',
+                         'title' => 'Screenshot',
                          'tooltip' => '',
                          'mandatory' => false,
                          'noteditable' => false,
@@ -401,7 +401,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'blockedVarsForExport' => 
                         array (
                         ),
-                         'width' => 655,
+                         'width' => 223,
                          'height' => 393,
                          'uploadPath' => '',
                       )),

@@ -19,28 +19,43 @@
 
 {# Title + Description #}
 <h2 class="text-center mt-5">{{ tool.title }}</h2>
-<p class="text-center">{{ tool.description }}</p>
-{#<h2 class="text-center mt-5">{{ tool.title }}</h2>
-<div class="d-flex justify-content-center">
-    <p class="text-center w-75">{{ tool.aboutTool }}</p>
-</div>#}
+{# Description Mobile #}
+<p class="text-center d-lg-none">{{ tool.description }}</p>
+{# Description Desctop #}
+<div class="d-none d-lg-flex justify-content-center">
+    <p class="text-center w-75">{{ tool.description }}</p>
+</div>
 
 {# Carousel/Slideshow #}
 {% if tool.screenshotsMobile %}
-    <div class="ms-4" style="width: 100%; overflow-x:auto">
-        <div style="width: 700px">
-            <div class="row gx-4">
+<div class="d-md-none ps-3 ps-md-4" style="width: 100%; overflow-x:auto">
+    <div style="width: {{ 223 * tool.screenshotsMobile|length }}px">
+        <div class="row gx-4">
+            {% for img in tool.screenshotsMobile %}
+                <div class="col">
+                    <img src="{{ img.screenshot.data }}" height="393" class="w-100 rounded-3" alt="{{ img.screenshot.data.filename }}">
+                </div>
+            {% endfor %}
 
-                {% for img in tool.screenshots %}
-                    <div class="col">
-                        <img src="{{ img.screenshot.data }}" height="393" class="w-100 rounded-3" alt="{{ img.screenshot.data.filename }}">
-                    </div>
-                {% endfor %}
-
-            </div>
         </div>
     </div>
-    {% endif %}
+</div>
+{% endif %}
+{% if tool.screenshots %}
+<div class="d-none d-md-block ps-3 ps-md-4" style="width: 100%; overflow-x:auto">
+    <div style="width: {{ 655 * tool.screenshots|length }}px">
+        <div class="row gx-4">
+
+            {% for img in tool.screenshots %}
+                <div class="col">
+                    <img src="{{ img.screenshot.data }}" height="393" class="w-100 rounded-3" alt="{{ img.screenshot.data.filename }}">
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endif %}
 
 {#
 {% if tool.screenshots %}
@@ -78,12 +93,12 @@
 
 {# Video #}
 {% if tool.embedLoom %}
-    <h2 class="text-center mt-5">{{ 'how_does_it_work_?' | trans }}</h2>
+    <h2 class="text-center mt-5">{{ 'how_does_it_work_?'|trans }}</h2>
     <div class="ratio ratio-16x9 mt-4">
-        {{ tool.embedLoom | raw }}
+        {{ tool.embedLoom|raw }}
     </div>
 {% elseif tool.video %}
-    <h2 class="text-center mt-5">{{ 'how_does_it_work_?' | trans }}</h2>
+    <h2 class="text-center mt-5">{{ 'how_does_it_work_?'|trans }}</h2>
     <div class="ratio ratio-16x9 mt-4">
         {% if tool.video.type == 'asset' %}
             <video poster="{{ tool.video.poster }}" title="{{ tool.video.title }}" controls="controls" class="rounded-3">
@@ -109,23 +124,44 @@
 
 {# Sticky box #}
 <div class="fixed-bottom sticky-top bg-body mt-3 p-3 g-0 rounded-3 shadow-lg" style="bottom: 20px;">
-    <div>
-        {% if tool.image %}
-            <img class="float-start rounded-3 me-3" width="65" height="45" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
-        {% endif %}
-        <h4 class="m-0">{{ tool.title }}</h4>
-        {% if tool.creator %}
-            <p class="m-0 mys__description-font">{{ 'by' | trans }} {{ tool.creator.name }}</p>
-        {% endif %}
+    <div class="row">
+        <div class="col">
+            {% if tool.image %}
+                <img class="float-start rounded-3 me-3" width="65" height="45" src="{{ tool.image }}" alt="{{ tool.image.filename }}">
+            {% endif %}
+            <h4 class="m-0">{{ tool.title }}</h4>
+            {% if tool.creator %}
+                <p class="m-0 mys__description-font">{{ 'by'|trans }} {{ tool.creator.name }}</p>
+            {% endif %}
+        </div>
+        {# Display on Desktop #}
+        <div class="col d-none d-sm-block">
+            <div class="row gx-1">
+                <div class="col d-flex align-items-center">
+                    <h4 class="ms-auto mb-0">{{ 'free'|trans }}</h4>
+                </div>
+                <div class="col text-end">
+                    <a role="button" class="btn btn-outline-primary rounded-pill pt-1" href="#" aria-label="{{ 'try_tool'|trans }}">
+                        <h3 class="d-inline">
+                            {{ 'try_tool'|trans }}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right ms-2" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                            </svg>
+                        </h3>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row mt-3 align-items-center h-100">
+    {# Display on Mobile #}
+    <div class="d-sm-none row mt-3 align-items-center h-100">
         <div class="col-3">
-            <h4 class="ps-3 m-0">{{ 'free' | trans }}</h4>
+            <h4 class="ps-3 m-0">{{ 'free'|trans }}</h4>
         </div>
         <div class="col-9">
-            <a role="button" class="btn btn-outline-primary rounded-pill float-end" href="#" aria-label="{{ 'try_tool' | trans }}">
+            <a role="button" class="btn btn-outline-primary rounded-pill float-end pt-1" href="#" aria-label="{{ 'try_tool'|trans }}">
                 <h3 class="m-0">
-                    {{ 'try_tool' | trans }}
+                    {{ 'try_tool'|trans }}
                     <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-right ms-2" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
                     </svg>
@@ -134,6 +170,7 @@
         </div>
     </div>
 </div>
+
 {#<div class="d-none row fixed-bottom sticky-top bg-light mt-3 p-2 g-0 rounded-3">
         <div class="col">
             {% if tool.image %}

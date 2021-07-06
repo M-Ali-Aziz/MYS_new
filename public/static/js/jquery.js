@@ -8,4 +8,10 @@ $(function() {
 
     // Add class to YouTube iframe element
     $("iframe[src^='https://www.youtube']").addClass("rounded-3");
+
+    let width = $(window).width();
+    // Add class shadow to header when mobile
+    if (width <= 992) {
+        $('header').addClass('shadow-sm');
+    }
 });

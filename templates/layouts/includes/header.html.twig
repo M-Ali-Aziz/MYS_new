@@ -11,8 +11,8 @@
 }) %}
 
 
-<nav class="navbar navbar-expand-lg navbar-light py-4">
-    {# Logo Image #}
+<nav class="navbar navbar-expand-lg navbar-light sticky-top py-4">
+    {# Logo Image Mobile #}
     <a class="d-lg-none mx-auto" href="{{ navStartNode }}">
         <img id="logoMobile" src="{{ asset('/static/images/logo.svg') }}" width="148" height="18" alt="logo"
              loading="lazy">
@@ -27,13 +27,13 @@
              width="16" height="16" alt="navbarTogglerIcon" aria-label="Close" loading="lazy">
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarContent">
-        <div class="d-flex justify-content-center py-4">
+    <div class="collapse navbar-collapse mt-4 mt-md-0" id="navbarContent">
+        <div class="d-flex justify-content-center mx-auto">
             <ul class="navbar-nav flex-column text-center">
-                {# Logo Image #}
+                {# Logo Image Desktop #}
                 <li class="nav-item mb-4 mt-5 d-none d-lg-block">
                     <a href="{{ navStartNode }}">
-                        <img id="logo" src="{{ asset('/static/images/logo.svg') }}" width="120" height="70" alt="logo"
+                        <img id="logo" src="{{ asset('/static/images/logoDesktop.svg') }}" width="110" height="51" alt="logo"
                              loading="lazy">
                     </a>
                 </li>
