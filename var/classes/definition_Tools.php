@@ -37,7 +37,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'Tools',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1625568564,
+   'modificationDate' => 1625638695,
    'userOwner' => 2,
    'userModification' => 2,
    'parentClass' => '',
@@ -555,7 +555,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
                          'blockedVarsForExport' => 
                         array (
                         ),
-                         'labelWidth' => NULL,
+                         'labelWidth' => '',
                          'labelAlign' => 'left',
                       )),
                     ),
