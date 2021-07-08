@@ -18,7 +18,7 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
    'name' => 'SsoIdentity',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1621596847,
+   'modificationDate' => 1625728415,
    'userOwner' => 0,
    'userModification' => 2,
    'parentClass' => '\\CustomerManagementFrameworkBundle\\Model\\AbstractSsoIdentity',

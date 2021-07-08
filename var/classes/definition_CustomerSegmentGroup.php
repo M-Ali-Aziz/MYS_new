@@ -16,11 +16,11 @@ Fields Summary:
 
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
-   'id' => 1,
+   'id' => '1',
    'name' => 'CustomerSegmentGroup',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1621596846,
+   'modificationDate' => 1625728415,
    'userOwner' => 0,
    'userModification' => 2,
    'parentClass' => '',

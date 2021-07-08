@@ -16,11 +16,11 @@ Fields Summary:
 
 
 return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
-   'id' => 2,
+   'id' => '2',
    'name' => 'CustomerSegment',
    'description' => '',
    'creationDate' => 0,
-   'modificationDate' => 1621596846,
+   'modificationDate' => 1625728415,
    'userOwner' => 0,
    'userModification' => 2,
    'parentClass' => '\\CustomerManagementFrameworkBundle\\Model\\AbstractCustomerSegment',
@@ -255,7 +255,6 @@ return Pimcore\Model\DataObject\ClassDefinition::__set_state(array(
               4 => 
               Pimcore\Model\DataObject\ClassDefinition\Data\TargetGroup::__set_state(array(
                  'fieldtype' => 'targetGroup',
-                 'options' => NULL,
                  'width' => '',
                  'defaultValue' => NULL,
                  'optionsProviderClass' => NULL,
