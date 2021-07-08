@@ -28,7 +28,7 @@
 
 {# Carousel/Slideshow #}
 {% if tool.screenshotsMobile %}
-<div class="d-md-none ps-3 ps-md-4" style="width: 100%; overflow-x:auto">
+<div class="d-md-none ps-3 ps-md-4 mys__scrollbar" style="width: 100%; overflow-x:auto">
     <div style="width: {{ 223 * tool.screenshotsMobile|length }}px">
         <div class="row gx-4">
             {% for img in tool.screenshotsMobile %}
@@ -42,7 +42,7 @@
 </div>
 {% endif %}
 {% if tool.screenshots %}
-<div class="d-none d-md-block ps-3 ps-md-4" style="width: 100%; overflow-x:auto">
+<div class="d-none d-md-block ps-3 ps-md-4 mys__scrollbar" style="width: 100%; overflow-x:auto">
     <div style="width: {{ 655 * tool.screenshots|length }}px">
         <div class="row gx-4">
 

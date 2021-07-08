@@ -68,3 +68,7 @@ body {
     border-color: #484DBD !important;
     box-shadow: none;
 }
+
+.mys__scrollbar::-webkit-scrollbar {
+    display: none;
+}
