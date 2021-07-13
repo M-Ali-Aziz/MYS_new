@@ -48,6 +48,14 @@ pimcore:
         class_overrides:
             Pimcore\Model\DataObject\Customer: App\Model\Customer
 
+    email:
+        sender:
+            name: 'MeetYourself'
+            email: info@meetyourself.tools
+        return:
+            name: ''
+            email: ''
+
 pimcore_customer_management_framework:
     # Enable/Disable SSO oauth client. If enabled additional steps are necessary, see SSO docs for details.
     oauth_client:
